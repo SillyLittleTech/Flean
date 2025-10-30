@@ -48,6 +48,33 @@
             const selectedMirror = (store.selectedMirror || 'antifandom.com').toLowerCase();
             const askOnVisit = !!store.askOnVisit;
 
+            // Try to load an "independent" datapack bundled with the extension
+            // which maps fandom origin hosts to independent destinations.
+            // We'll fetch it from the extension resources and look for a match.
+            let datapackMatch = null;
+            try {
+                const dpUrl = browser.runtime.getURL('indies/datapack.json');
+                const resp = await fetch(dpUrl);
+                if (resp && resp.ok) {
+                    const dp = await resp.json();
+                    // dp is an array of entries. Search for a matching origin_base_url
+                    for (const entry of dp) {
+                        if (!entry.origins) continue;
+                        for (const o of entry.origins) {
+                            if (!o.origin_base_url) continue;
+                            if (o.origin_base_url.toLowerCase() === host) {
+                                datapackMatch = entry;
+                                break;
+                            }
+                        }
+                        if (datapackMatch) break;
+                    }
+                }
+            } catch (e) {
+                // If datapack can't be read, ignore and fall back to mirrors list
+                console.warn('Flean: failed to load datapack.json', e);
+            }
+
             // Derive a wiki name from the fandom host (e.g. 'deltarune' from 'deltarune.fandom.com').
             let wikiName = host;
             if (host.endsWith('.fandom.com') || host.endsWith('.wikia.com')) {
@@ -61,16 +88,29 @@
                 wikiName = host.split('.')[0];
             }
 
-            // Build a page slug from the /wiki/<Title> fragment. Many Breezewiki
-            // mirrors use the pattern /<wikiName>/wiki/<page>. Normalize the
-            // title by replacing underscores/spaces with dashes and lowercasing.
+            // Extract the wiki page title from the /wiki/<Title> fragment.
             let page = path.replace(/^\/wiki\//i, '');
             try { page = decodeURIComponent(page); } catch (e) { /* ignore */ }
-            // Normalize underscores and whitespace into dashes, trim punctuation.
-            const pageSlug = page.replace(/[_\s]+/g, '-').replace(/^[-]+|[-]+$/g, '').toLowerCase();
 
-            // Construct mirror URL in the pattern: <mirror>/<wikiName>/wiki/<pageSlug>
-            const mirrorUrl = `${url.protocol}//${selectedMirror}/${wikiName}/wiki/${pageSlug}${url.search}${url.hash}`;
+            // If we found a datapack match prefer the destination_base_url and
+            // destination_content_path defined in the datapack entry.
+            let mirrorUrl = null;
+            if (datapackMatch) {
+                const destBase = datapackMatch.destination_base_url || datapackMatch.destination;
+                // Prefer explicit destination_content_path, fall back to /wiki/
+                const destPath = datapackMatch.destination_content_path || '/wiki/';
+                // MediaWiki-style pages expect underscores rather than dashes and
+                // preserve capitalization; keep page title as-is but replace
+                // leading/trailing slashes.
+                const destPage = page.replace(/^\//, '');
+                // Build URL (ensure no double-slashes)
+                mirrorUrl = `${url.protocol}//${destBase.replace(/\/$/, '')}${destPath}${destPage}${url.search}${url.hash}`;
+            } else {
+                // Normalize the title for generic Breezewiki-like mirrors: use
+                // lowercase dashes (this is the fallback behavior).
+                const pageSlug = page.replace(/[_\s]+/g, '-').replace(/^[-]+|[-]+$/g, '').toLowerCase();
+                mirrorUrl = `${url.protocol}//${selectedMirror}/${wikiName}/wiki/${pageSlug}${url.search}${url.hash}`;
+            }
 
             // If we're already on a mirror host, do nothing.
             if (host === selectedMirror || (store.mirrors || []).includes(host)) return;
