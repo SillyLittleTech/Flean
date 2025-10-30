@@ -19,14 +19,14 @@ function load_datapack($path) {
         if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) return $decoded;
     }
 
-    // As a last resort, return the raw string so the UI can show a preview
+    // As a last resort, return null
     return null;
 }
 
 if (isset($_GET['preview'])) {
     // Return a short preview of the datapack file
     if (!file_exists($datapackPath)) {
-        echo json_encode(['error' => 'datapack not found']);
+        echo json_encode(['preview' => null, 'note' => 'no compiled mapping file present; using heuristics']);
         exit;
     }
     $raw = file_get_contents($datapackPath);
@@ -57,14 +57,8 @@ $result = [
     'reason' => ''
 ];
 
-if ($dat === null) {
-    $result['reason'] = 'datapack unreadable or invalid JSON';
-    echo json_encode($result);
-    exit;
-}
-
-// Exact host match
-if (isset($dat[$host])) {
+// Exact host match from datapack
+if (is_array($dat) && isset($dat[$host])) {
     $entry = $dat[$host];
     $destBase = isset($entry['destBase']) ? $entry['destBase'] : '';
     $destPath = isset($entry['destPath']) ? $entry['destPath'] : '/';
@@ -103,8 +97,16 @@ if (isset($dat[$host])) {
     $redirect .= $destPath;
     if ($article !== '') {
         if (substr($redirect, -1) !== '/') $redirect .= '/';
-        $redirect .= $article;
+        $redirect .= rawurlencode($article);
     }
+
+    // Preserve query and fragment if present (basic handling)
+    parse_str($query, $qparts);
+    if (!empty($qparts)) {
+        if (isset($qparts['title'])) unset($qparts['title']);
+        if (!empty($qparts)) $redirect .= '?' . http_build_query($qparts);
+    }
+    if (isset($parsed['fragment']) && $parsed['fragment']) $redirect .= '#' . $parsed['fragment'];
 
     $result['matched'] = true;
     $result['redirect'] = $redirect;
@@ -113,5 +115,33 @@ if (isset($dat[$host])) {
     exit;
 }
 
-$result['reason'] = 'no mapping for host in datapack';
+// Heuristics fallback: try to convert .fandom.com -> .wiki.gg and use /wiki/ path
+if (substr($host, -11) === '.fandom.com') {
+    $base = substr($host, 0, -11) . '.wiki.gg';
+    // Extract title preferring /wiki/ or query title
+    $article = '';
+    if (strpos($path, '/wiki/') === 0) {
+        $article = substr($path, strlen('/wiki/'));
+    } else {
+        parse_str($query, $q);
+        if (!empty($q['title'])) $article = $q['title'];
+        else $article = ltrim($path, '/');
+    }
+
+    $redirect = 'https://' . rtrim($base, '/') . '/wiki/' . rawurlencode($article);
+    parse_str($query, $qparts);
+    if (!empty($qparts)) {
+        if (isset($qparts['title'])) unset($qparts['title']);
+        if (!empty($qparts)) $redirect .= '?' . http_build_query($qparts);
+    }
+    if (isset($parsed['fragment']) && $parsed['fragment']) $redirect .= '#' . $parsed['fragment'];
+
+    $result['matched'] = true;
+    $result['redirect'] = $redirect;
+    $result['used'] = 'heuristic';
+    echo json_encode($result);
+    exit;
+}
+
+$result['reason'] = 'no mapping or heuristic available for host';
 echo json_encode($result);
