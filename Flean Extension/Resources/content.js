@@ -143,34 +143,76 @@
             `;
 
             // Append elements to the document as early as possible.
-            document.documentElement.appendChild(style);
-            document.documentElement.appendChild(overlay);
+            // Put styles in <head> so they apply immediately, and overlay in <body>.
+            if (document.head) document.head.appendChild(style); else document.documentElement.appendChild(style);
+            if (document.body) document.body.appendChild(overlay); else document.documentElement.appendChild(overlay);
 
             // Handlers
-            document.getElementById('flean-open-mirror').addEventListener('click', () => {
-                // Navigate to mirror (replace so back doesn't go here)
-                window.location.replace(mirrorUrl);
+            // Attach handlers using the overlay element (more reliable than document.getElementById)
+            const openBtn = overlay.querySelector('#flean-open-mirror');
+            const onceBtn = overlay.querySelector('#flean-visit-once');
+            const allowBtn = overlay.querySelector('#flean-allow-site');
+            const settingsLink = overlay.querySelector('#flean-open-popup');
+
+            console.debug('Flean: overlay buttons', { openBtn: !!openBtn, onceBtn: !!onceBtn, allowBtn: !!allowBtn, settingsLink: !!settingsLink });
+
+            // Global overlay click tracer (diagnostic): logs any clicks inside overlay
+            overlay.addEventListener('click', (ev) => {
+                try {
+                    console.debug('Flean: overlay click', ev.target && (ev.target.id || ev.target.className || ev.target.tagName));
+                } catch (e) { /* ignore */ }
+            }, { capture: true });
+
+            // Navigate to mirror (replace so back doesn't go here)
+            if (openBtn) openBtn.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                console.debug('Flean: open mirror button clicked');
+                try { window.location.replace(mirrorUrl); } catch (err) { console.warn('Flean: failed to open mirror', err); }
             });
 
-            document.getElementById('flean-visit-once').addEventListener('click', () => {
-                // Remove overlay and let page load normally for this visit.
+            // Dismiss overlay and allow visit for this page load
+            if (onceBtn) onceBtn.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                console.debug('Flean: visit once clicked');
                 overlay.remove();
                 style.remove();
             });
 
-            document.getElementById('flean-allow-site').addEventListener('click', async () => {
-                // Add host to allowedSites and continue to fandom page.
-                const updated = Array.from(new Set([...(allowedSites || []), host]));
-                await browser.storage.local.set({ allowedSites: updated });
+            // Add host to ignore list (fetch current storage to avoid stale state)
+            if (allowBtn) allowBtn.addEventListener('click', async (e) => {
+                e.preventDefault(); e.stopPropagation();
+                console.debug('Flean: allow site clicked for', host);
+                try {
+                    const s = await browser.storage.local.get({ allowedSites: [] });
+                    const updated = Array.from(new Set([...(s.allowedSites || []), host]));
+                    await browser.storage.local.set({ allowedSites: updated });
+                } catch (err) {
+                    console.warn('Flean: failed to add allowed site', err);
+                }
                 overlay.remove();
                 style.remove();
             });
 
-            document.getElementById('flean-open-popup').addEventListener('click', () => {
-                // Open extension popup (action) programmatically when possible.
-                // Some browsers ignore this; fallback: instruct user to click toolbar icon.
-                try { browser.runtime.openOptionsPage(); } catch (e) { /* ignore */ }
-            });
+            // Try to open extension settings/options. If unavailable, remove the link.
+            if (settingsLink) {
+                // Feature-detect runtime API
+                const canOpenOptions = !!(browser && browser.runtime && typeof browser.runtime.openOptionsPage === 'function');
+                if (!canOpenOptions) {
+                    // Remove the link from UI if we cannot open options programmatically
+                    settingsLink.remove();
+                } else {
+                    settingsLink.addEventListener('click', (e) => {
+                        e.preventDefault(); e.stopPropagation();
+                        try {
+                            browser.runtime.openOptionsPage();
+                        } catch (err) {
+                            console.warn('Flean: could not open options page', err);
+                            // If it fails, hide the link so the user doesn't click repeatedly
+                            settingsLink.remove();
+                        }
+                    });
+                }
+            }
 
         } catch (err) {
             // If anything fails, don't block the page.
