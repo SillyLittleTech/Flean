@@ -1,5 +1,9 @@
+// iOS-only web view container. Guard compilation so macOS builds don't attempt to
+// compile UIKit/SwiftUI iOS-only APIs.
+#if os(iOS)
 import SwiftUI
 import WebKit
+import UIKit
 
 struct WebViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
@@ -38,3 +42,5 @@ struct WebViewContainer_Previews: PreviewProvider {
         WebViewContainer()
     }
 }
+
+#endif
