@@ -22,18 +22,42 @@
             });
 
             const allowedSites = store.allowedSites || [];
-            const selectedMirror = store.selectedMirror || 'antifandom.com';
+            const selectedMirror = (store.selectedMirror || 'antifandom.com').toLowerCase();
 
-            // If current host or full URL is allowed, just let the page load normally.
-            if (allowedSites.includes(host) || allowedSites.includes(url.href)) {
-                return;
+            // Derive a wiki name from the fandom host (e.g. 'deltarune' from 'deltarune.fandom.com').
+            let wikiName = host;
+            if (host.endsWith('.fandom.com') || host.endsWith('.wikia.com')) {
+                const parts = host.split('.');
+                if (parts.length >= 3) {
+                    wikiName = parts[parts.length - 3];
+                } else {
+                    wikiName = parts[0];
+                }
+            } else {
+                wikiName = host.split('.')[0];
             }
+
+            // Build a page slug from the /wiki/<Title> fragment. Many Breezewiki
+            // mirrors use the pattern /<wikiName>/wiki/<page>. Normalize the
+            // title by replacing underscores/spaces with dashes and lowercasing.
+            let page = path.replace(/^\/wiki\//i, '');
+            try { page = decodeURIComponent(page); } catch (e) { /* ignore */ }
+            // Normalize underscores and whitespace into dashes, trim punctuation.
+            const pageSlug = page.replace(/[_\s]+/g, '-').replace(/^[-]+|[-]+$/g, '').toLowerCase();
+
+            // Construct mirror URL in the pattern: <mirror>/<wikiName>/wiki/<pageSlug>
+            const mirrorUrl = `${url.protocol}//${selectedMirror}/${wikiName}/wiki/${pageSlug}${url.search}${url.hash}`;
 
             // If we're already on a mirror host, do nothing.
             if (host === selectedMirror || (store.mirrors || []).includes(host)) return;
 
-            // Construct mirror URL (preserve protocol, path, query, hash)
-            const mirrorUrl = `${url.protocol}//${selectedMirror}${url.pathname}${url.search}${url.hash}`;
+            // If current host or full URL is in the configured list, auto-redirect
+            // to the selected mirror (treat popup "Allowed sites" as the redirect list).
+            if (allowedSites.includes(host) || allowedSites.includes(url.href)) {
+                console.log('Flean: auto-redirecting', url.href, '->', mirrorUrl);
+                window.location.replace(mirrorUrl);
+                return;
+            }
 
             // Inject a minimal overlay UI so the user can choose what to do.
             const style = document.createElement('style');
