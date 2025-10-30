@@ -2,10 +2,28 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="popup.css">
     <script type="module" src="popup.js"></script>
+    <title>Flean</title>
+    <style>body{margin:0}</style>
 </head>
 <body>
-    <strong>Hello World!</strong>
+    <div class="container">
+        <h1>Flean</h1>
+
+        <label for="mirror">Selected mirror</label>
+        <select id="mirror"></select>
+
+        <div class="actions">
+            <button id="save" class="primary">Save</button>
+            <button id="reset">Reset</button>
+        </div>
+
+        <h2>Allowed sites</h2>
+        <ul id="allowedList" class="allowed-list"></ul>
+
+        <div class="note">Allowlist entries are hostnames (e.g. <code>example.fandom.com</code>) or full URLs. You can also allow a host from the interstitial when visiting a Fandom page.</div>
+    </div>
 </body>
 </html>

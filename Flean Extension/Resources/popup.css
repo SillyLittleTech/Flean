@@ -8,8 +8,15 @@ body {
 
     font-family: system-ui;
     text-align: center;
+     background-color: white;
+     color: black;
+     border: 1px solid #ccc;
 }
 
 @media (prefers-color-scheme: dark) {
     /* Dark Mode styles go here. */
+     body {
+          background-color: black;
+          color: white;
+     }
 }
