@@ -73,12 +73,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 	renderAllowedList(store.allowedSites || []);
 
 	// Save selected mirror and the askOnVisit flag
+	// Persist selected mirror immediately when changed so closing the popup
+	// doesn't lose the selection.
+	el('mirror').addEventListener('change', async (e) => {
+		const selected = e.target.value;
+		await browser.storage.local.set({ selectedMirror: selected });
+		console.log('Flean: saved selectedMirror', selected);
+	});
+
 	el('save').addEventListener('click', async () => {
 		const selected = el('mirror').value;
 		const askVal = !!el('askOnVisit').checked;
 		await browser.storage.local.set({ selectedMirror: selected, askOnVisit: askVal });
-		// update UI copy
-		alert('Saved settings');
+		// update UI copy (non-blocking)
+		console.log('Flean: saved settings');
 	});
 
 	// Persist askOnVisit immediately when toggled
