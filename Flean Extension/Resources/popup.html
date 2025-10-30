@@ -6,24 +6,36 @@
     <link rel="stylesheet" href="popup.css">
     <script type="module" src="popup.js"></script>
     <title>Flean</title>
-    <style>body{margin:0}</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Flean</h1>
+    <div class="panel">
+        <header class="panel-header">
+            <div class="title">Flean</div>
+            <div class="subtitle">Redirect Fandom wiki pages to Breezewiki mirrors</div>
+        </header>
 
-        <label for="mirror">Selected mirror</label>
-        <select id="mirror"></select>
+        <section class="row">
+            <label for="mirror">Selected mirror</label>
+            <select id="mirror"></select>
+        </section>
 
-        <div class="actions">
-            <button id="save" class="primary">Save</button>
-            <button id="reset">Reset</button>
-        </div>
+        <section class="row small">
+            <label for="askOnVisit">Ask every time</label>
+            <input type="checkbox" id="askOnVisit" />
+            <p class="muted">When enabled you'll be prompted on each redirect; when disabled hosts in the Redirect list will redirect automatically.</p>
+        </section>
 
-        <h2>Allowed sites</h2>
-        <ul id="allowedList" class="allowed-list"></ul>
+        <section class="row actions">
+            <button id="save" class="btn primary">Save</button>
+            <button id="reset" class="btn">Reset</button>
+        </section>
 
-        <div class="note">Allowlist entries are hostnames (e.g. <code>example.fandom.com</code>) or full URLs. You can also allow a host from the interstitial when visiting a Fandom page.</div>
+        <section>
+            <h3>Redirect list (hosts)</h3>
+            <ul id="allowedList" class="allowed-list"></ul>
+            <p class="muted">Add a fandom host (e.g. <code>deltarune.fandom.com</code>) to always redirect to the selected mirror.</p>
+        </section>
+
     </div>
 </body>
 </html>

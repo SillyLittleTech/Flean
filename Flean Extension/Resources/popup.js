@@ -1,7 +1,31 @@
 const DEFAULTS = {
 	selectedMirror: 'antifandom.com',
-	mirrors: ['antifandom.com', 'breezewiki.com', 'breezewiki.org'],
-	allowedSites: []
+	mirrors: [
+		'breezewiki.com',
+		'antifandom.com',
+		'breezewiki.pussthecat.org',
+		'bw.hamstro.dev',
+		'bw.projectsegfau.lt',
+		'breeze.hostux.net',
+		'bw.artemislena.eu',
+		'nerd.whatever.social',
+		'breezewiki.frontendfriendly.xyz',
+		'breeze.nohost.network',
+		'breeze.whateveritworks.org',
+		'z.opnxng.com',
+		'breezewiki.hyperreal.coffee',
+		'breezewiki.catsarch.com',
+		'breeze.mint.lgbt',
+		'breezewiki.woodland.cafe',
+		'breezewiki.nadeko.net',
+		'fandom.reallyaweso.me',
+		'breezewiki.4o1x5.dev',
+		'breezewiki.r4fo.com',
+		'breezewiki.private.coffee',
+		'fan.blitzw.in'
+	],
+	allowedSites: [],
+	askOnVisit: false
 };
 
 function el(id){ return document.getElementById(id); }
@@ -43,13 +67,23 @@ function renderAllowedList(list){
 document.addEventListener('DOMContentLoaded', async () => {
 	const store = await loadState();
 	renderMirrors(store.mirrors, store.selectedMirror);
+	// initialize the Ask toggle
+	const ask = el('askOnVisit');
+	ask.checked = !!store.askOnVisit;
 	renderAllowedList(store.allowedSites || []);
 
+	// Save selected mirror and the askOnVisit flag
 	el('save').addEventListener('click', async () => {
 		const selected = el('mirror').value;
-		await browser.storage.local.set({ selectedMirror: selected });
+		const askVal = !!el('askOnVisit').checked;
+		await browser.storage.local.set({ selectedMirror: selected, askOnVisit: askVal });
 		// update UI copy
-		alert('Saved selected mirror: ' + selected);
+		alert('Saved settings');
+	});
+
+	// Persist askOnVisit immediately when toggled
+	el('askOnVisit').addEventListener('change', async (e) => {
+		await browser.storage.local.set({ askOnVisit: !!e.target.checked });
 	});
 
 	el('reset').addEventListener('click', async () => {

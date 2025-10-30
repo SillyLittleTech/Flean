@@ -6,17 +6,46 @@ body {
     width: 100px;
     padding: 10px;
 
-    font-family: system-ui;
-    text-align: center;
-     background-color: white;
-     color: black;
-     border: 1px solid #ccc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: transparent;
+    margin: 0;
+    color: var(--fg, #0b1220);
 }
 
 @media (prefers-color-scheme: dark) {
     /* Dark Mode styles go here. */
-     body {
-          background-color: black;
-          color: white;
-     }
+    :root { --bg: #0b1220; --panel: #0f1724; --fg: #e6eef8; --muted: #9aa6bd; }
+}
+
+.panel {
+    width: 320px;
+    padding: 14px;
+    box-sizing: border-box;
+    background: var(--panel, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(11,18,32,0.12);
+}
+
+.panel-header { padding-bottom: 8px; border-bottom: 1px solid rgba(11,18,32,0.06); margin-bottom: 12px; }
+.title { font-weight: 700; font-size: 16px; color: var(--fg, #0b1220); }
+.subtitle { font-size: 12px; color: var(--muted, #556277); margin-top: 4px; }
+
+.row { display:flex; flex-direction:column; gap:6px; margin-bottom: 10px; }
+.row.small { gap:4px; }
+label { font-size:12px; color: var(--muted, #556277); }
+select { padding:8px 10px; border-radius:8px; border:1px solid rgba(11,18,32,0.08); }
+
+.actions { display:flex; gap:8px; align-items:center; }
+.btn { padding:8px 12px; border-radius:8px; border:1px solid rgba(11,18,32,0.06); background:transparent; cursor:pointer; }
+.btn.primary { background:#0b6ef0; color:#fff; border:none; }
+
+.allowed-list { list-style:none; padding:0; margin:8px 0 0 0; max-height:120px; overflow:auto; }
+.allowed-list li { display:flex; justify-content:space-between; align-items:center; padding:6px 8px; border-radius:6px; background: rgba(11,18,32,0.02); margin-bottom:6px; font-size:13px; }
+.allowed-list li .small { margin-left:8px; }
+.muted { color: var(--muted, #6b7a92); font-size:12px; margin:6px 0 0 0 }
+
+code { background: rgba(11,18,32,0.04); padding:2px 6px; border-radius:6px; font-size:12px }
+
+@media (prefers-color-scheme: dark) {
+    .panel { background: var(--panel); box-shadow:none }
 }

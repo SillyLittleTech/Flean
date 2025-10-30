@@ -18,11 +18,35 @@
             const store = await browser.storage.local.get({
                 allowedSites: [],
                 selectedMirror: 'antifandom.com',
-                mirrors: ['antifandom.com', 'breezewiki.com', 'breezewiki.org']
+                mirrors: [
+                    'breezewiki.com',
+                    'antifandom.com',
+                    'breezewiki.pussthecat.org',
+                    'bw.hamstro.dev',
+                    'bw.projectsegfau.lt',
+                    'breeze.hostux.net',
+                    'bw.artemislena.eu',
+                    'nerd.whatever.social',
+                    'breezewiki.frontendfriendly.xyz',
+                    'breeze.nohost.network',
+                    'breeze.whateveritworks.org',
+                    'z.opnxng.com',
+                    'breezewiki.hyperreal.coffee',
+                    'breezewiki.catsarch.com',
+                    'breeze.mint.lgbt',
+                    'breezewiki.woodland.cafe',
+                    'breezewiki.nadeko.net',
+                    'fandom.reallyaweso.me',
+                    'breezewiki.4o1x5.dev',
+                    'breezewiki.r4fo.com',
+                    'breezewiki.private.coffee',
+                    'fan.blitzw.in'
+                ]
             });
 
             const allowedSites = store.allowedSites || [];
             const selectedMirror = (store.selectedMirror || 'antifandom.com').toLowerCase();
+            const askOnVisit = !!store.askOnVisit;
 
             // Derive a wiki name from the fandom host (e.g. 'deltarune' from 'deltarune.fandom.com').
             let wikiName = host;
@@ -51,12 +75,17 @@
             // If we're already on a mirror host, do nothing.
             if (host === selectedMirror || (store.mirrors || []).includes(host)) return;
 
-            // If current host or full URL is in the configured list, auto-redirect
-            // to the selected mirror (treat popup "Allowed sites" as the redirect list).
+            // If current host or full URL is in the configured list, either auto-redirect
+            // or show the interstitial depending on the askOnVisit setting.
             if (allowedSites.includes(host) || allowedSites.includes(url.href)) {
-                console.log('Flean: auto-redirecting', url.href, '->', mirrorUrl);
-                window.location.replace(mirrorUrl);
-                return;
+                if (askOnVisit) {
+                    // show overlay and let user decide
+                    console.log('Flean: configured to ask before redirect for', host);
+                } else {
+                    console.log('Flean: auto-redirecting', url.href, '->', mirrorUrl);
+                    window.location.replace(mirrorUrl);
+                    return;
+                }
             }
 
             // Inject a minimal overlay UI so the user can choose what to do.
