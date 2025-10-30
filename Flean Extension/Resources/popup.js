@@ -47,7 +47,7 @@ function renderAllowedList(list){
 	const ul = el('allowedList');
 	ul.innerHTML = '';
 	if (!list || list.length === 0){
-		const li = document.createElement('li'); li.textContent = 'No allowed sites'; li.className = 'empty'; ul.appendChild(li); return;
+		const li = document.createElement('li'); li.textContent = 'No ignored sites'; li.className = 'empty'; ul.appendChild(li); return;
 	}
 	list.forEach(item => {
 		const li = document.createElement('li');
@@ -72,32 +72,33 @@ document.addEventListener('DOMContentLoaded', async () => {
 	ask.checked = !!store.askOnVisit;
 	renderAllowedList(store.allowedSites || []);
 
-	// Save selected mirror and the askOnVisit flag
-	// Persist selected mirror immediately when changed so closing the popup
-	// doesn't lose the selection.
+	// Persist selected mirror as soon as user changes it so the popup can close
+	// without losing the selection.
 	el('mirror').addEventListener('change', async (e) => {
 		const selected = e.target.value;
 		await browser.storage.local.set({ selectedMirror: selected });
 		console.log('Flean: saved selectedMirror', selected);
 	});
 
-	el('save').addEventListener('click', async () => {
-		const selected = el('mirror').value;
-		const askVal = !!el('askOnVisit').checked;
-		await browser.storage.local.set({ selectedMirror: selected, askOnVisit: askVal });
-		// update UI copy (non-blocking)
-		console.log('Flean: saved settings');
-	});
-
 	// Persist askOnVisit immediately when toggled
 	el('askOnVisit').addEventListener('change', async (e) => {
 		await browser.storage.local.set({ askOnVisit: !!e.target.checked });
+		console.log('Flean: askOnVisit changed', !!e.target.checked);
 	});
 
-	el('reset').addEventListener('click', async () => {
-		await browser.storage.local.set(DEFAULTS);
-		renderMirrors(DEFAULTS.mirrors, DEFAULTS.selectedMirror);
-		renderAllowedList(DEFAULTS.allowedSites);
-		alert('Reset to defaults');
+	// Add host to ignore list
+	el('addHostBtn').addEventListener('click', async () => {
+		const input = el('addHostInput');
+		let host = (input.value || '').trim();
+		if (!host) return;
+		// normalize
+		host = host.toLowerCase().replace(/^https?:\/\//, '').replace(/\/$/, '');
+		const store = await browser.storage.local.get(DEFAULTS);
+		const updated = Array.from(new Set([...(store.allowedSites || []), host]));
+		await browser.storage.local.set({ allowedSites: updated });
+		renderAllowedList(updated);
+		input.value = '';
 	});
+
+	// Reset removed: settings persist immediately. If you need to reset, clear storage manually or reinstall extension.
 });

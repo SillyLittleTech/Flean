@@ -18,4 +18,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
+    // Opt into secure state restoration. This tells the system that the app
+    // supports secure coding for saved/restored state. Adds the explicit
+    // delegate hook the system log warns about.
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+        return true
+    }
+
 }

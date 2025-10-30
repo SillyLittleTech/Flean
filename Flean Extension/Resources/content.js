@@ -18,6 +18,7 @@
             const store = await browser.storage.local.get({
                 allowedSites: [],
                 selectedMirror: 'antifandom.com',
+                askOnVisit: false,
                 mirrors: [
                     'breezewiki.com',
                     'antifandom.com',
@@ -48,46 +49,17 @@
             const selectedMirror = (store.selectedMirror || 'antifandom.com').toLowerCase();
             const askOnVisit = !!store.askOnVisit;
 
-            // Try to load an "independent" datapack bundled with the extension
-            // which maps fandom origin hosts to independent destinations.
-            // We'll fetch it from the extension resources and look for a match.
-            let datapackMatch = null;
-            try {
-                const candidates = [
-                    'indies/datapack.json',
-                    'Resources/indies/datapack.json',
-                    '../indies/datapack.json',
-                    '/indies/datapack.json'
-                ];
-                for (const rel of candidates) {
-                    try {
-                        const dpUrl = browser.runtime.getURL(rel);
-                        const resp = await fetch(dpUrl);
-                        if (resp && resp.ok) {
-                            const dp = await resp.json();
-                            // dp is an array of entries. Search for a matching origin_base_url
-                            for (const entry of dp) {
-                                if (!entry.origins) continue;
-                                for (const o of entry.origins) {
-                                    if (!o.origin_base_url) continue;
-                                    if (o.origin_base_url.toLowerCase() === host) {
-                                        datapackMatch = entry;
-                                        break;
-                                    }
-                                }
-                                if (datapackMatch) break;
-                            }
-                        }
-                    } catch (inner) {
-                        // try next candidate
-                        continue;
-                    }
-                    if (datapackMatch) break;
-                }
-            } catch (e) {
-                // If datapack can't be read at all, ignore and fall back to mirrors list
-                console.warn('Flean: failed to load datapack.json', e);
+            // If this host is in the user's ignore list (allowedSites), do not redirect.
+            if ((allowedSites || []).includes(host)) {
+                console.log('Flean: host is in ignore list, skipping redirection for', host);
+                return;
             }
+
+            // Datapack integration removed for now. We fallback to configured mirrors only.
+
+            // Datapack disabled: no datapack match will be used; rely on mirror fallback.
+            const datapackIndex = null;
+            const datapackMatch = null;
 
             // Derive a wiki name from the fandom host (e.g. 'deltarune' from 'deltarune.fandom.com').
             let wikiName = host;
@@ -109,17 +81,8 @@
             // If we found a datapack match prefer the destination_base_url and
             // destination_content_path defined in the datapack entry.
             let mirrorUrl = null;
-            if (datapackMatch) {
-                const destBase = datapackMatch.destination_base_url || datapackMatch.destination;
-                // Prefer explicit destination_content_path, fall back to /wiki/
-                const destPath = datapackMatch.destination_content_path || '/wiki/';
-                // MediaWiki-style pages expect underscores rather than dashes and
-                // preserve capitalization; keep page title as-is but replace
-                // leading/trailing slashes.
-                const destPage = page.replace(/^\//, '');
-                // Build URL (ensure no double-slashes)
-                mirrorUrl = `${url.protocol}//${destBase.replace(/\/$/, '')}${destPath}${destPage}${url.search}${url.hash}`;
-            } else {
+            // No datapack match available; use mirror fallback below.
+            {
                 // Fallback behavior for generic mirrors: preserve the page title
                 // capitalization/underscores where possible. Many mirrors accept
                 // <Mirror>/<WikiName>/wiki/<Title> with Title preserving case.

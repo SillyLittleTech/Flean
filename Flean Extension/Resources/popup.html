@@ -22,18 +22,19 @@
         <section class="row small">
             <label for="askOnVisit">Ask every time</label>
             <input type="checkbox" id="askOnVisit" />
-            <p class="muted">When enabled you'll be prompted on each redirect; when disabled hosts in the Redirect list will redirect automatically.</p>
+            <p class="muted">When enabled you'll be prompted on each redirect; when disabled hosts in the Ignore list will be allowed through without prompting or redirection.</p>
         </section>
 
-        <section class="row actions">
-            <button id="save" class="btn primary">Save</button>
-            <button id="reset" class="btn">Reset</button>
-        </section>
+        <!-- actions removed: settings persist immediately -->
 
         <section>
-            <h3>Redirect list (hosts)</h3>
+            <h3>Ignore list (hosts)</h3>
+            <p class="muted">Add a fandom host (e.g. <code>deltarune.fandom.com</code>) to ignore redirection and always allow visiting the Fandom site.</p>
+            <div class="add-host-row">
+                <input id="addHostInput" placeholder="example.fandom.com" />
+                <button id="addHostBtn" class="small">Add</button>
+            </div>
             <ul id="allowedList" class="allowed-list"></ul>
-            <p class="muted">Add a fandom host (e.g. <code>deltarune.fandom.com</code>) to always redirect to the selected mirror.</p>
         </section>
 
     </div>

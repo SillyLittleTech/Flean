@@ -1,0 +1,2862 @@
+{}
+  "7daystodie.fandom.com": {
+    "destBase": "7daystodie.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "abiotic-factor.fandom.com": {
+    "destBase": "abioticfactor.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "acecombat.fandom.com": {
+    "destBase": "acecombat.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "advancewars.fandom.com": {
+    "destBase": "warswiki.org",
+    "destPath": "/wiki/"
+  },
+  "advancewars.neoseeker.com": {
+    "destBase": "warswiki.org",
+    "destPath": "/wiki/"
+  },
+  "theadventurezone.fandom.com": {
+    "destBase": "adventurezonewiki.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "after-inc.fandom.com": {
+    "destBase": "afterinc.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "against-the-storm.fandom.com": {
+    "destBase": "hoodedhorse.com/wiki/Against_the_Storm",
+    "destPath": "/"
+  },
+  "aground.fandom.com": {
+    "destBase": "aground.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "ahatintime.fandom.com": {
+    "destBase": "ahatintime.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "aibo.fandom.com": {
+    "destBase": "aibo.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "akudamadrive.fandom.com": {
+    "destBase": "akudamadrive.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "alphaver.fandom.com": {
+    "destBase": "alphaver.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "altverz.fandom.com": {
+    "destBase": "altverz.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "android.fandom.com": {
+    "destBase": "androidwiki.info",
+    "destPath": "/wiki/"
+  },
+  "animalcrossing.fandom.com": {
+    "destBase": "nookipedia.com",
+    "destPath": "/wiki/"
+  },
+  "acnl.fandom.com": {
+    "destBase": "nookipedia.com",
+    "destPath": "/wiki/"
+  },
+  "acnewleaf.fandom.com": {
+    "destBase": "nookipedia.com",
+    "destPath": "/wiki/"
+  },
+  "acwikipeaia.fandom.com": {
+    "destBase": "nookipedia.com",
+    "destPath": "/wiki/"
+  },
+  "animalcrossing.neoseeker.com": {
+    "destBase": "nookipedia.com",
+    "destPath": "/wiki/"
+  },
+  "animalcrossingpocketcamp.fandom.com": {
+    "destBase": "animalcrossingpocketcamp.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "animalroyale.fandom.com": {
+    "destBase": "wiki.animalroyale.com",
+    "destPath": "/wiki/"
+  },
+  "animal-well.fandom.com": {
+    "destBase": "animalwell.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "anothereden.fandom.com": {
+    "destBase": "anothereden.wiki",
+    "destPath": "/w/"
+  },
+  "answeredprayers.fandom.com": {
+    "destBase": "yume.wiki",
+    "destPath": "/"
+  },
+  "aitg.fandom.com": {
+    "destBase": "aitg.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "antonblastpedia.fandom.com": {
+    "destBase": "summitpedia.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "antonball.fandom.com": {
+    "destBase": "summitpedia.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "anvil-empires.fandom.com": {
+    "destBase": "anvilempires.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "apexlegends.fandom.com": {
+    "destBase": "apexlegends.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "apex--legends-archive.fandom.com": {
+    "destBase": "apexlegends.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "apico.fandom.com": {
+    "destBase": "wiki.apico.buzz",
+    "destPath": "/wiki/"
+  },
+  "ark.fandom.com": {
+    "destBase": "ark.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "ark-survival-evolved-archive.fandom.com": {
+    "destBase": "ark.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "arknights.fandom.com": {
+    "destBase": "arknights.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "arms.fandom.com": {
+    "destBase": "armswiki.org",
+    "destPath": "/wiki/"
+  },
+  "artonelico.fandom.com": {
+    "destBase": "exapico.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "ashesofcreation.fandom.com": {
+    "destBase": "ashesofcreation.wiki",
+    "destPath": "/"
+  },
+  "ashesofcreation-archive.fandom.com": {
+    "destBase": "ashesofcreation.wiki",
+    "destPath": "/"
+  },
+  "ashestown.fandom.com": {
+    "destBase": "ashestown.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "assault-android-cactus.fandom.com": {
+    "destBase": "assaultandroidcactus.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "assaultlily.fandom.com": {
+    "destBase": "assaultlily.wiki",
+    "destPath": "/wiki/"
+  },
+  "assault-lily-anime.fandom.com": {
+    "destBase": "assaultlily.wiki",
+    "destPath": "/wiki/"
+  },
+  "astrea-sso.fandom.com": {
+    "destBase": "astrea.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "astroneer.fandom.com": {
+    "destBase": "astroneer.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "atelier.fandom.com": {
+    "destBase": "atelier.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "atlyss.fandom.com": {
+    "destBase": "atlyss.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "closinglogogroup.fandom.com": {
+    "destBase": "www.avid.wiki",
+    "destPath": "/"
+  },
+  "blhx.fandom.com": {
+    "destBase": "azurlane.koumakan.jp",
+    "destPath": "/wiki/"
+  },
+  "azur-lane.fandom.com": {
+    "destBase": "azurlane.koumakan.jp",
+    "destPath": "/wiki/"
+  },
+  "backpack-battles.fandom.com": {
+    "destBase": "backpackbattles.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "backpack-hero.fandom.com": {
+    "destBase": "backpackhero.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "bakugan.fandom.com": {
+    "destBase": "bakugan.wiki",
+    "destPath": "/wiki/"
+  },
+  "balatrogame.fandom.com": {
+    "destBase": "balatrowiki.org",
+    "destPath": "/w/"
+  },
+  "baldis-basics-in-education-and-learning.fandom.com": {
+    "destBase": "baldisbasics.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "baldursgate3.wiki.fextralife.com": {
+    "destBase": "bg3.wiki",
+    "destPath": "/wiki/"
+  },
+  "baldurs-gate-3-guide.fandom.com": {
+    "destBase": "bg3.wiki",
+    "destPath": "/wiki/"
+  },
+  "ballisticng.fandom.com": {
+    "destBase": "ballisticng.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "bandori.fandom.com": {
+    "destBase": "bandori.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "banjokazooie.fandom.com": {
+    "destBase": "banjokazooiewiki.com",
+    "destPath": "/wiki/"
+  },
+  "banjokazooie.neoseeker.com": {
+    "destBase": "banjokazooiewiki.com",
+    "destPath": "/wiki/"
+  },
+  "barotrauma.fandom.com": {
+    "destBase": "barotraumagame.com",
+    "destPath": "/wiki/"
+  },
+  "battlebit.fandom.com": {
+    "destBase": "battlebit.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "battle-cats.fandom.com": {
+    "destBase": "battlecats.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "galactica.fandom.com": {
+    "destBase": "en.battlestarwiki.org",
+    "destPath": "/"
+  },
+  "thebellasara.fandom.com": {
+    "destBase": "bellasara.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "beatmania.fandom.com": {
+    "destBase": "remywiki.com",
+    "destPath": "/"
+  },
+  "dancedancerevolution.fandom.com": {
+    "destBase": "remywiki.com",
+    "destPath": "/"
+  },
+  "jubeat.fandom.com": {
+    "destBase": "remywiki.com",
+    "destPath": "/"
+  },
+  "bemani.fandom.com": {
+    "destBase": "remywiki.com",
+    "destPath": "/"
+  },
+  "bindingofisaacrebirth.fandom.com": {
+    "destBase": "bindingofisaacrebirth.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "tboirevelations.fandom.com": {
+    "destBase": "tboirevelations.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "bionicle.fandom.com": {
+    "destBase": "biosector01.com",
+    "destPath": "/wiki/"
+  },
+  "bitcraft.fandom.com": {
+    "destBase": "bitcraft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "blazblue.fandom.com": {
+    "destBase": "blazblue.wiki",
+    "destPath": "/wiki/"
+  },
+  "bleed-game.fandom.com": {
+    "destBase": "bleed.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "blockfrontmc.fandom.com": {
+    "destBase": "blockfront.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "blood-1997.fandom.com": {
+    "destBase": "blood-wiki.org",
+    "destPath": "/index.php?title="
+  },
+  "bloons.fandom.com": {
+    "destBase": "www.bloonswiki.com",
+    "destPath": "/"
+  },
+  "bluearchive.fandom.com": {
+    "destBase": "bluearchive.wiki",
+    "destPath": "/wiki/"
+  },
+  "boardgame-online.fandom.com": {
+    "destBase": "bgo.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "bookoftravels.fandom.com": {
+    "destBase": "bookoftravels.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "boxboy.fandom.com": {
+    "destBase": "boxboy.wiki",
+    "destPath": "/w/"
+  },
+  "braingirl.fandom.com": {
+    "destBase": "yume.wiki",
+    "destPath": "/"
+  },
+  "stormlightarchive.fandom.com": {
+    "destBase": "coppermind.net",
+    "destPath": "/wiki/"
+  },
+  "mistborn.fandom.com": {
+    "destBase": "coppermind.net",
+    "destPath": "/wiki/"
+  },
+  "brawlhalla.fandom.com": {
+    "destBase": "brawlhalla.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "brighter-shores.fandom.com": {
+    "destBase": "brightershoreswiki.org",
+    "destPath": "/w/"
+  },
+  "brightershores.fandom.com": {
+    "destBase": "brightershoreswiki.org",
+    "destPath": "/w/"
+  },
+  "brotato.fandom.com": {
+    "destBase": "brotato.wiki.spellsandguns.com",
+    "destPath": "/"
+  },
+  "hbbrutalorchestra.fandom.com": {
+    "destBase": "brutalorchestra.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "bubsy.fandom.com": {
+    "destBase": "bubsypedia.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "bugfables.fandom.com": {
+    "destBase": "bugfables.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "buildabear.fandom.com": {
+    "destBase": "buildabearwiki.info",
+    "destPath": "/wiki/"
+  },
+  "bzrockcom.fandom.com": {
+    "destBase": "www.bzwiki.com",
+    "destPath": "/"
+  },
+  "calamitymod.fandom.com": {
+    "destBase": "calamitymod.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "capoeirista.fandom.com": {
+    "destBase": "capoeirawiki.org",
+    "destPath": "/wiki/"
+  },
+  "carrion.fandom.com": {
+    "destBase": "carrion.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "catacomb.fandom.com": {
+    "destBase": "catacomb.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "celestegame.fandom.com": {
+    "destBase": "celeste.ink",
+    "destPath": "/wiki/"
+  },
+  "cerasus.fandom.com": {
+    "destBase": "yume.wiki",
+    "destPath": "/"
+  },
+  "chef-rpg.fandom.com": {
+    "destBase": "chefrpg.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "cherry-forest.fandom.com": {
+    "destBase": "cherryforest.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "chibi-robo.fandom.com": {
+    "destBase": "chibi-robo.wiki",
+    "destPath": "/wiki/"
+  },
+  "chicory-a-colorful-tale.fandom.com": {
+    "destBase": "wiki.chicory.pizza",
+    "destPath": "/wiki/"
+  },
+  "chinafake.fandom.com": {
+    "destBase": "chinafake.wiki",
+    "destPath": "/wiki/"
+  },
+  "chipschallenge.fandom.com": {
+    "destBase": "wiki.bitbusters.club",
+    "destPath": "/"
+  },
+  "chrono.fandom.com": {
+    "destBase": "www.chronowiki.org",
+    "destPath": "/wiki/"
+  },
+  "chrono.neoseeker.com": {
+    "destBase": "www.chronowiki.org",
+    "destPath": "/wiki/"
+  },
+  "skylines.fandom.com": {
+    "destBase": "skylines.paradoxwikis.com",
+    "destPath": "/"
+  },
+  "cities-skylines-ii.fandom.com": {
+    "destBase": "cs2.paradoxwikis.com",
+    "destPath": "/"
+  },
+  "citymanga.fandom.com": {
+    "destBase": "city.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "cityofheroes.fandom.com": {
+    "destBase": "archive.paragonwiki.com",
+    "destPath": "/wiki/"
+  },
+  "cobalt-core.fandom.com": {
+    "destBase": "cobaltcore.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "commander-keen.fandom.com": {
+    "destBase": "keenwiki.shikadi.net",
+    "destPath": "/wiki/"
+  },
+  "commodore64.fandom.com": {
+    "destBase": "www.c64-wiki.com",
+    "destPath": "/wiki/"
+  },
+  "content-warning.fandom.com": {
+    "destBase": "contentwarning.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "content-warning-landfall.fandom.com": {
+    "destBase": "contentwarning.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "conways-game-of-life.fandom.com": {
+    "destBase": "conwaylife.com",
+    "destPath": "/wiki/"
+  },
+  "cookieclicker.fandom.com": {
+    "destBase": "cookieclicker.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "coromon.fandom.com": {
+    "destBase": "coromon.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "cosmicreach.fandom.com": {
+    "destBase": "cosmicreach.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "cosmoteer.fandom.com": {
+    "destBase": "cosmoteer.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "crabchampions.fandom.com": {
+    "destBase": "crabchampions.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "creatures.fandom.com": {
+    "destBase": "creatures.wiki",
+    "destPath": "/"
+  },
+  "criticalrole.fandom.com": {
+    "destBase": "criticalrole.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "d2mc.fandom.com": {
+    "destBase": "d2mc.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "daria.fandom.com": {
+    "destBase": "dariawiki.org",
+    "destPath": "/wiki/"
+  },
+  "darkage-bizarre.fandom.com": {
+    "destBase": "darkgardenstudios.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "dark-and-darker.fandom.com": {
+    "destBase": "darkanddarker.wiki.spellsandguns.com",
+    "destPath": "/"
+  },
+  "darkestdungeon.fandom.com": {
+    "destBase": "darkestdungeon.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "darkestdungeon2.wiki.fextralife.com": {
+    "destBase": "darkestdungeon.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "dashbored.fandom.com": {
+    "destBase": "dashbored.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "deadbydaylight.fandom.com": {
+    "destBase": "deadbydaylight.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "deadcells.fandom.com": {
+    "destBase": "deadcells.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "deadestate.fandom.com": {
+    "destBase": "deadestate.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "playdeadlock.fandom.com": {
+    "destBase": "deadlock.wiki",
+    "destPath": "/"
+  },
+  "deadmau5.fandom.com": {
+    "destBase": "deadmau5.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "deadpoly.fandom.com": {
+    "destBase": "deadpoly.wiki",
+    "destPath": "/"
+  },
+  "deadpolygame.fandom.com": {
+    "destBase": "deadpoly.wiki",
+    "destPath": "/"
+  },
+  "deathbattle.fandom.com": {
+    "destBase": "deathbattle.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "deeprockgalactic.fandom.com": {
+    "destBase": "deeprockgalactic.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "deltarune.fandom.com": {
+    "destBase": "deltarune.wiki",
+    "destPath": "/w/"
+  },
+  "deltarune-archive.fandom.com": {
+    "destBase": "deltarune.wiki",
+    "destPath": "/w/"
+  },
+  "destiny.fandom.com": {
+    "destBase": "www.destinypedia.com",
+    "destPath": "/"
+  },
+  "destiny.neoseeker.com": {
+    "destBase": "www.destinypedia.com",
+    "destPath": "/"
+  },
+  "destiny.wiki.fextralife.com": {
+    "destBase": "www.destinypedia.com",
+    "destPath": "/"
+  },
+  "destiny2.wiki.fextralife.com": {
+    "destBase": "www.destinypedia.com",
+    "destPath": "/"
+  },
+  "detectiveconan.fandom.com": {
+    "destBase": "www.detectiveconanworld.com",
+    "destPath": "/wiki/"
+  },
+  "dfo.fandom.com": {
+    "destBase": "wiki.dfo.world",
+    "destPath": "/view/"
+  },
+  "digimon.fandom.com": {
+    "destBase": "wikimon.net",
+    "destPath": "/"
+  },
+  "digimon.neoseeker.com": {
+    "destBase": "wikimon.net",
+    "destPath": "/"
+  },
+  "tardis.fandom.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "torchwood-archive.fandom.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "doctorwho.neoseeker.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "thesarahjaneadventures.fandom.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "doctorwhotv.fandom.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "doctorwhothetimetravlingtardis.fandom.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "k9tv.fandom.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "whoniverse.fandom.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "daleksrus.fandom.com": {
+    "destBase": "tardis.wiki",
+    "destPath": "/wiki/"
+  },
+  "dogcraft.fandom.com": {
+    "destBase": "dogcraft.net",
+    "destPath": "/wiki/"
+  },
+  "dome-keeper.fandom.com": {
+    "destBase": "domekeeper.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "dominioncg.fandom.com": {
+    "destBase": "wiki.dominionstrategy.com",
+    "destPath": "/index.php/"
+  },
+  "dominionstrategy.fandom.com": {
+    "destBase": "wiki.dominionstrategy.com",
+    "destPath": "/index.php/"
+  },
+  "dontstarve.fandom.com": {
+    "destBase": "dontstarve.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "doom.fandom.com": {
+    "destBase": "doomwiki.org",
+    "destPath": "/wiki/"
+  },
+  "doom.neoseeker.com": {
+    "destBase": "doomwiki.org",
+    "destPath": "/wiki/"
+  },
+  "dota2.fandom.com": {
+    "destBase": "liquipedia.net/dota2",
+    "destPath": "/"
+  },
+  "dotage-game.fandom.com": {
+    "destBase": "dotage.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "dotflow.fandom.com": {
+    "destBase": "yume.wiki",
+    "destPath": "/"
+  },
+  "dovedale.fandom.com": {
+    "destBase": "dovedale.wiki",
+    "destPath": "/wiki/"
+  },
+  "dragalialost.fandom.com": {
+    "destBase": "dragalialost.wiki",
+    "destPath": "/w/"
+  },
+  "dragon-village-series.fandom.com": {
+    "destBase": "dragonvillageseries.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "drawntolife.fandom.com": {
+    "destBase": "drawntolife.wiki",
+    "destPath": "/en/"
+  },
+  "disneydreamlightvalley.fandom.com": {
+    "destBase": "dreamlightvalleywiki.com",
+    "destPath": "/"
+  },
+  "disney-dreamlight-valley.fandom.com": {
+    "destBase": "dreamlightvalleywiki.com",
+    "destPath": "/"
+  },
+  "dreamsphere.fandom.com": {
+    "destBase": "dreamsphere.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "dredge.fandom.com": {
+    "destBase": "dredge.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "dungeondefenders2.fandom.com": {
+    "destBase": "wiki.dungeondefenders2.com",
+    "destPath": "/wiki/"
+  },
+  "dungeonrampage.fandom.com": {
+    "destBase": "dungeonrampage.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "dungeons-and-degenerate-gamblers.fandom.com": {
+    "destBase": "degenerategamblers.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "dungeons.fandom.com": {
+    "destBase": "dnd-wiki.org",
+    "destPath": "/wiki/"
+  },
+  "dwarffortress.fandom.com": {
+    "destBase": "dwarffortresswiki.org",
+    "destPath": "/index.php/"
+  },
+  "dyinglight.fandom.com": {
+    "destBase": "dyinglight.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "dyson-sphere-program.fandom.com": {
+    "destBase": "dsp-wiki.com",
+    "destPath": "/"
+  },
+  "earthbound.fandom.com": {
+    "destBase": "wikibound.info",
+    "destPath": "/wiki/"
+  },
+  "mother.neoseeker.com": {
+    "destBase": "wikibound.info",
+    "destPath": "/wiki/"
+  },
+  "eastscarp.fandom.com": {
+    "destBase": "eastscarp.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "eastward.fandom.com": {
+    "destBase": "eastwardwiki.com",
+    "destPath": "/"
+  },
+  "echoes-of-the-plum-grove.fandom.com": {
+    "destBase": "echoesoftheplumgrove.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "eiyuden-chronicle-hundred-heroes.fandom.com": {
+    "destBase": "eiyuden.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "eldenring.fandom.com": {
+    "destBase": "eldenring.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "eldenring.wiki.fextralife.com": {
+    "destBase": "eldenring.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "elderscrolls.fandom.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "the-elder-scrolls.fandom.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "skyrim.fandom.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "elderscrollslegends.wiki.fextralife.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "elderscrollsonline.wiki.fextralife.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "skyrim.wiki.fextralife.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "elderscrolls.neoseeker.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "skyrim.neoseeker.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "oblivionremastered.wiki.fextralife.com": {
+    "destBase": "en.uesp.net",
+    "destPath": "/wiki/"
+  },
+  "ember-knights-game.fandom.com": {
+    "destBase": "emberknights.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "empireofsin.fandom.com": {
+    "destBase": "eos.paradoxwikis.com",
+    "destPath": "/"
+  },
+  "empires-of-the-undergrowth.fandom.com": {
+    "destBase": "hoodedhorse.com/wiki/Empires_of_the_Undergrowth",
+    "destPath": "/"
+  },
+  "enajoelg.fandom.com": {
+    "destBase": "ena.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "enshrouded.fandom.com": {
+    "destBase": "enshrouded.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "enterthegungeon.fandom.com": {
+    "destBase": "enterthegungeon.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "epicbattlefantasy.fandom.com": {
+    "destBase": "epicbattlefantasy.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "epithet-erased.fandom.com": {
+    "destBase": "epitheterasedwiki.com",
+    "destPath": "/wiki/"
+  },
+  "erepublik.fandom.com": {
+    "destBase": "wiki.erepublik.com",
+    "destPath": "/index.php/"
+  },
+  "essentialsdocs.fandom.com": {
+    "destBase": "essentialsengine.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "evangelion.fandom.com": {
+    "destBase": "wiki.evageeks.org",
+    "destPath": "/"
+  },
+  "evangelion.neoseeker.com": {
+    "destBase": "wiki.evageeks.org",
+    "destPath": "/"
+  },
+  "eve.fandom.com": {
+    "destBase": "wiki.eveuniversity.org",
+    "destPath": "/"
+  },
+  "everything-upgrade-tree.fandom.com": {
+    "destBase": "eutwiki.com",
+    "destPath": "/"
+  },
+  "evil-prince-and-the-puppet.fandom.com": {
+    "destBase": "akuaya.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "factorio.fandom.com": {
+    "destBase": "wiki.factorio.com",
+    "destPath": "/"
+  },
+  "kiseki.fandom.com": {
+    "destBase": "falcom.wiki",
+    "destPath": "/wiki/"
+  },
+  "isu.fandom.com": {
+    "destBase": "falcom.wiki",
+    "destPath": "/wiki/"
+  },
+  "tokyoxanadu.fandom.com": {
+    "destBase": "falcom.wiki",
+    "destPath": "/wiki/"
+  },
+  "gagharv.fandom.com": {
+    "destBase": "falcom.wiki",
+    "destPath": "/wiki/"
+  },
+  "nihon-falcom.fandom.com": {
+    "destBase": "falcom.wiki",
+    "destPath": "/wiki/"
+  },
+  "gurumin.fandom.com": {
+    "destBase": "falcom.wiki",
+    "destPath": "/wiki/"
+  },
+  "fallen-aces.fandom.com": {
+    "destBase": "fallenaces.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "fallout.fandom.com": {
+    "destBase": "fallout.wiki",
+    "destPath": "/wiki/"
+  },
+  "fallout-archive.fandom.com": {
+    "destBase": "fallout.wiki",
+    "destPath": "/wiki/"
+  },
+  "fallout.neoseeker.com": {
+    "destBase": "fallout.wiki",
+    "destPath": "/wiki/"
+  },
+  "fallout4.wiki.fextralife.com": {
+    "destBase": "fallout.wiki",
+    "destPath": "/wiki/"
+  },
+  "fallout76.wiki.fextralife.com": {
+    "destBase": "fallout.wiki",
+    "destPath": "/wiki/"
+  },
+  "famicom.fandom.com": {
+    "destBase": "famiwiki.net",
+    "destPath": "/wiki/"
+  },
+  "farmingsimulator.fandom.com": {
+    "destBase": "farmingsimulator.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "farthest-frontier.fandom.com": {
+    "destBase": "farthestfrontier.wiki",
+    "destPath": "/wiki/"
+  },
+  "fatalframe.fandom.com": {
+    "destBase": "wiki.thelostvillage.net",
+    "destPath": "/index.php/"
+  },
+  "fearandhunger.fandom.com": {
+    "destBase": "fearandhunger.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "ffxiv.fandom.com": {
+    "destBase": "ffxiv.consolegameswiki.com",
+    "destPath": "/wiki/"
+  },
+  "fields-of-mistria.fandom.com": {
+    "destBase": "fieldsofmistria.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "find-everything-rbx.fandom.com": {
+    "destBase": "findeverything.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "fireemblem.fandom.com": {
+    "destBase": "fireemblemwiki.org",
+    "destPath": "/wiki/"
+  },
+  "fireemblem.neoseeker.com": {
+    "destBase": "fireemblemwiki.org",
+    "destPath": "/wiki/"
+  },
+  "fisch.fandom.com": {
+    "destBase": "fischipedia.org",
+    "destPath": "/wiki/"
+  },
+  "foxhole.fandom.com": {
+    "destBase": "foxhole.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "frackinuniverse.fandom.com": {
+    "destBase": "frackinuniverse.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "freespace.fandom.com": {
+    "destBase": "wiki.hard-light.net",
+    "destPath": "/index.php/"
+  },
+  "fridaynightfunkin.fandom.com": {
+    "destBase": "fridaynightfunkin.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "friendsatthetable.fandom.com": {
+    "destBase": "fatt.wiki",
+    "destPath": "/view/"
+  },
+  "thenewarchives.fandom.com": {
+    "destBase": "fatt.wiki",
+    "destPath": "/view/"
+  },
+  "counterweight.fandom.com": {
+    "destBase": "fatt.wiki",
+    "destPath": "/view/"
+  },
+  "twilightmirage.fandom.com": {
+    "destBase": "fatt.wiki",
+    "destPath": "/view/"
+  },
+  "partizan.fandom.com": {
+    "destBase": "fatt.wiki",
+    "destPath": "/view/"
+  },
+  "sangfielle.fandom.com": {
+    "destBase": "fatt.wiki",
+    "destPath": "/view/"
+  },
+  "visit-bluff-city.fandom.com": {
+    "destBase": "fatt.wiki",
+    "destPath": "/view/"
+  },
+  "argo-bdp.fandom.com": {
+    "destBase": "argobdp.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "ftlmultiverse.fandom.com": {
+    "destBase": "ftlmultiverse.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "futurama.fandom.com": {
+    "destBase": "theinfosphere.org",
+    "destPath": "/"
+  },
+  "futurama.neoseeker.com": {
+    "destBase": "theinfosphere.org",
+    "destPath": "/"
+  },
+  "fzero.fandom.com": {
+    "destBase": "mutecity.org",
+    "destPath": "/wiki/"
+  },
+  "fzero.neoseeker.com": {
+    "destBase": "mutecity.org",
+    "destPath": "/wiki/"
+  },
+  "galaxylife.fandom.com": {
+    "destBase": "galaxylife.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "galaxyonfire.fandom.com": {
+    "destBase": "galaxyonfire.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "iceandfire.fandom.com": {
+    "destBase": "awoiaf.westeros.org",
+    "destPath": "/index.php/"
+  },
+  "garn47.fandom.com": {
+    "destBase": "garn47.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "gttod.fandom.com": {
+    "destBase": "gttod.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "gex.fandom.com": {
+    "destBase": "gexpedia.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "giana-sisters.fandom.com": {
+    "destBase": "gianasisters.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "gigantic.fandom.com": {
+    "destBase": "gogigantic.wiki",
+    "destPath": "/wiki/"
+  },
+  "gigantic-archive.fandom.com": {
+    "destBase": "gogigantic.wiki",
+    "destPath": "/wiki/"
+  },
+  "gimkit.fandom.com": {
+    "destBase": "gimkit.wiki",
+    "destPath": "/wiki/"
+  },
+  "girls-frontline.fandom.com": {
+    "destBase": "iopwiki.com",
+    "destPath": "/wiki/"
+  },
+  "girls-last-tour.fandom.com": {
+    "destBase": "girlslasttour.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "gnorp-apologue.fandom.com": {
+    "destBase": "gnorp.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "godzilla.fandom.com": {
+    "destBase": "wikizilla.org",
+    "destPath": "/wiki/"
+  },
+  "goldensun.fandom.com": {
+    "destBase": "goldensunwiki.net",
+    "destPath": "/wiki/"
+  },
+  "goldensun.neoseeker.com": {
+    "destBase": "goldensunwiki.net",
+    "destPath": "/wiki/"
+  },
+  "gothic.fandom.com": {
+    "destBase": "gothic.wiki",
+    "destPath": "/w/"
+  },
+  "graalmilitary.fandom.com": {
+    "destBase": "wiki.graalmilitary.com",
+    "destPath": "/wiki/"
+  },
+  "granblue.fandom.com": {
+    "destBase": "gbf.wiki",
+    "destPath": "/"
+  },
+  "greenday.fandom.com": {
+    "destBase": "greenday.shoutwiki.com",
+    "destPath": "/wiki/"
+  },
+  "grounded.fandom.com": {
+    "destBase": "grounded.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "gtfo.fandom.com": {
+    "destBase": "gtfo.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "guildwiki.fandom.com": {
+    "destBase": "wiki.guildwars.com",
+    "destPath": "/wiki/"
+  },
+  "guiltygear.fandom.com": {
+    "destBase": "guiltygear.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "habbo.fandom.com": {
+    "destBase": "habboxwiki.com",
+    "destPath": "/"
+  },
+  "half-life.fandom.com": {
+    "destBase": "combineoverwiki.net",
+    "destPath": "/wiki/"
+  },
+  "halflife.neoseeker.com": {
+    "destBase": "combineoverwiki.net",
+    "destPath": "/wiki/"
+  },
+  "halo.fandom.com": {
+    "destBase": "www.halopedia.org",
+    "destPath": "/"
+  },
+  "halo.neoseeker.com": {
+    "destBase": "www.halopedia.org",
+    "destPath": "/"
+  },
+  "hanna-barbera.fandom.com": {
+    "destBase": "hanna-barberawiki.com",
+    "destPath": "/wiki/"
+  },
+  "hearthstone.fandom.com": {
+    "destBase": "hearthstone.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "hearthstone.neoseeker.com": {
+    "destBase": "hearthstone.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "helldivers.fandom.com": {
+    "destBase": "helldivers.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "hellmet-roblox.fandom.com": {
+    "destBase": "hellmet.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "hello-neighbor.fandom.com": {
+    "destBase": "helloneighbor.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "hollowknight.fandom.com": {
+    "destBase": "hollowknight.wiki",
+    "destPath": "/w/"
+  },
+  "hollowknight.wiki.fextralife.com": {
+    "destBase": "hollowknight.wiki",
+    "destPath": "/w/"
+  },
+  "hollowknightsilksong.wiki.fextralife.com": {
+    "destBase": "hollowknight.wiki",
+    "destPath": "/w/"
+  },
+  "holocure.fandom.com": {
+    "destBase": "holocure.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "hololivevtuber.fandom.com": {
+    "destBase": "hololive.wiki",
+    "destPath": "/wiki/"
+  },
+  "homm.fandom.com": {
+    "destBase": "heroes.thelazy.net",
+    "destPath": "/index.php/"
+  },
+  "honeyworks-premium-live.fandom.com": {
+    "destBase": "hanipre.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "horizonxi.fandom.com": {
+    "destBase": "horizonffxi.wiki",
+    "destPath": "/"
+  },
+  "horticular.fandom.com": {
+    "destBase": "horticular.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "houkai2nd.fandom.com": {
+    "destBase": "houkai2nd.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "hybridanimals.fandom.com": {
+    "destBase": "hybridanimals.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "hyperrogue.fandom.com": {
+    "destBase": "hyperrogue.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "hypnospace.fandom.com": {
+    "destBase": "hypnospace.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "idle-wizard.fandom.com": {
+    "destBase": "idlewizard.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "idling-to-rule-the-gods.fandom.com": {
+    "destBase": "itrtg.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "idolish7.fandom.com": {
+    "destBase": "idolish7.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "idolmaster.fandom.com": {
+    "destBase": "project-imas.wiki",
+    "destPath": "/"
+  },
+  "illusion-carnival.fandom.com": {
+    "destBase": "illusioncarnival.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "immortal-life.fandom.com": {
+    "destBase": "immortallife.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "industrialist.fandom.com": {
+    "destBase": "industrialist.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "inmost.fandom.com": {
+    "destBase": "inmostwiki.com",
+    "destPath": "/"
+  },
+  "in-stars-and-time.fandom.com": {
+    "destBase": "instarsandtime.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "jordanb.fandom.com": {
+    "destBase": "whenobjectsworks.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "island-adventures.fandom.com": {
+    "destBase": "islandadventures.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "item-asylum-wiki.fandom.com": {
+    "destBase": "jbcstudios.miraheze.org",
+    "destPath": "/"
+  },
+  "iwannalockpick.fandom.com": {
+    "destBase": "iwannalockpickwiki.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "jojo.fandom.com": {
+    "destBase": "jojowiki.com",
+    "destPath": "/"
+  },
+  "junkjack.fandom.com": {
+    "destBase": "junkjack.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "kairosoft.fandom.com": {
+    "destBase": "kairosoft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "kancolle.fandom.com": {
+    "destBase": "en.kancollewiki.net",
+    "destPath": "/"
+  },
+  "katamari.fandom.com": {
+    "destBase": "katamaripedia.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "katana-zero.fandom.com": {
+    "destBase": "katanazero.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "katawashoujo.fandom.com": {
+    "destBase": "wiki.fhs.sh",
+    "destPath": "/wiki/"
+  },
+  "kemono-friends.fandom.com": {
+    "destBase": "japari-library.com",
+    "destPath": "/wiki/"
+  },
+  "kentucky-route-zero.fandom.com": {
+    "destBase": "consolidatedpower.co",
+    "destPath": "/~donald/zero/"
+  },
+  "kerbalspaceprogram.fandom.com": {
+    "destBase": "wiki.kerbalspaceprogram.com",
+    "destPath": "/wiki/"
+  },
+  "kingdomhearts.fandom.com": {
+    "destBase": "www.khwiki.com",
+    "destPath": "/"
+  },
+  "kingdomhearts.neoseeker.com": {
+    "destBase": "www.khwiki.com",
+    "destPath": "/"
+  },
+  "unchainedx.fandom.com": {
+    "destBase": "www.khuxwiki.com",
+    "destPath": "/wiki/"
+  },
+  "kirby.fandom.com": {
+    "destBase": "wikirby.com",
+    "destPath": "/wiki/"
+  },
+  "kirby.neoseeker.com": {
+    "destBase": "wikirby.com",
+    "destPath": "/wiki/"
+  },
+  "kitatcho-labs.fandom.com": {
+    "destBase": "kitatcho.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "knighthood.fandom.com": {
+    "destBase": "knighthood.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "knucklecracker.fandom.com": {
+    "destBase": "knucklecracker.com",
+    "destPath": "/wiki/doku.php?id="
+  },
+  "koei.fandom.com": {
+    "destBase": "koeitecmo.wiki",
+    "destPath": "/wiki/"
+  },
+  "kuroshitsuji.fandom.com": {
+    "destBase": "kuroshitsuji.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "kynseed.fandom.com": {
+    "destBase": "wiki.kynseed.com",
+    "destPath": "/wiki/"
+  },
+  "omninet.fandom.com": {
+    "destBase": "lancer.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "lastorigin.fandom.com": {
+    "destBase": "lastorigin.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "leaf-blower-revolution.fandom.com": {
+    "destBase": "leafblowerrevolution.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "leagueoflegends.fandom.com": {
+    "destBase": "wiki.leagueoflegends.com",
+    "destPath": "/en-us/"
+  },
+  "leagueoflegends.neoseeker.com": {
+    "destBase": "wiki.leagueoflegends.com",
+    "destPath": "/en-us/"
+  },
+  "left4dead.fandom.com": {
+    "destBase": "left4deadwiki.com",
+    "destPath": "/wiki/"
+  },
+  "legendofthegalacticheroes.fandom.com": {
+    "destBase": "gineipaedia.com",
+    "destPath": "/wiki/"
+  },
+  "lenen.fandom.com": {
+    "destBase": "lenen.shoutwiki.com",
+    "destPath": "/wiki/"
+  },
+  "lethal-company.fandom.com": {
+    "destBase": "lethal.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "leviathan-myth.fandom.com": {
+    "destBase": "leviathanmyth.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "lexington-and-concord.fandom.com": {
+    "destBase": "lexingtonandconcord.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "lgbtqia.fandom.com": {
+    "destBase": "new.lgbtqia.wiki",
+    "destPath": "/wiki/"
+  },
+  "library-of-ruina.fandom.com": {
+    "destBase": "libraryofruina.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "limbuscompany.fandom.com": {
+    "destBase": "limbuscompany.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "linkinpark.fandom.com": {
+    "destBase": "linkinpedia.com",
+    "destPath": "/wiki/"
+  },
+  "littlekingsstory.fandom.com": {
+    "destBase": "littlekingsstory.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "shadowsoverloathing.fandom.com": {
+    "destBase": "loathing.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "lobotomycorp.fandom.com": {
+    "destBase": "lobotomycorporation.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "lorcana.fandom.com": {
+    "destBase": "wiki.mushureport.com",
+    "destPath": "/wiki/"
+  },
+  "lotr.fandom.com": {
+    "destBase": "tolkiengateway.net",
+    "destPath": "/wiki/"
+  },
+  "lotr.neoseeker.com": {
+    "destBase": "tolkiengateway.net",
+    "destPath": "/wiki/"
+  },
+  "love-bullet.fandom.com": {
+    "destBase": "lovebullet.wiki",
+    "destPath": "/wiki/"
+  },
+  "mabinogi.fandom.com": {
+    "destBase": "wiki.mabinogiworld.com",
+    "destPath": "/view/"
+  },
+  "madoka.fandom.com": {
+    "destBase": "wiki.puella-magi.net",
+    "destPath": "/"
+  },
+  "the-magical-mixture-mill.fandom.com": {
+    "destBase": "themagicalmixturemill.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "magicalstarsign.fandom.com": {
+    "destBase": "kovopedia.com",
+    "destPath": "/wiki/"
+  },
+  "magicalvacation.fandom.com": {
+    "destBase": "kovopedia.com",
+    "destPath": "/wiki/"
+  },
+  "mtg.fandom.com": {
+    "destBase": "mtg.wiki",
+    "destPath": "/page/"
+  },
+  "mana.fandom.com": {
+    "destBase": "wikiofmana.com",
+    "destPath": "/wiki/"
+  },
+  "manor-lords.fandom.com": {
+    "destBase": "hoodedhorse.com/wiki/Manor_Lords",
+    "destPath": "/"
+  },
+  "maplestory.fandom.com": {
+    "destBase": "maplestorywiki.net",
+    "destPath": "/w/"
+  },
+  "maplestory.neoseeker.com": {
+    "destBase": "maplestorywiki.net",
+    "destPath": "/w/"
+  },
+  "mappercraft.fandom.com": {
+    "destBase": "mappercraft.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "mario.fandom.com": {
+    "destBase": "www.mariowiki.com",
+    "destPath": "/"
+  },
+  "donkeykong.fandom.com": {
+    "destBase": "www.mariowiki.com",
+    "destPath": "/"
+  },
+  "mario.neoseeker.com": {
+    "destBase": "www.mariowiki.com",
+    "destPath": "/"
+  },
+  "marioluigi.fandom.com": {
+    "destBase": "www.mariowiki.com",
+    "destPath": "/"
+  },
+  "papermario.fandom.com": {
+    "destBase": "www.mariowiki.com",
+    "destPath": "/"
+  },
+  "mariokart.fandom.com": {
+    "destBase": "www.mariowiki.com",
+    "destPath": "/"
+  },
+  "diceblock.fandom.com": {
+    "destBase": "www.mariowiki.com",
+    "destPath": "/"
+  },
+  "luigi-mansion.fandom.com": {
+    "destBase": "www.mariowiki.com",
+    "destPath": "/"
+  },
+  "mccisland.fandom.com": {
+    "destBase": "mccisland.wiki",
+    "destPath": "/"
+  },
+  "medabots.fandom.com": {
+    "destBase": "medarot.meowcorp.us",
+    "destPath": "/wiki/"
+  },
+  "gallowmere.fandom.com": {
+    "destBase": "medievil.wiki",
+    "destPath": "/w/"
+  },
+  "megamitensei.fandom.com": {
+    "destBase": "megatenwiki.com",
+    "destPath": "/wiki/"
+  },
+  "megamitensei.neoseeker.com": {
+    "destBase": "megatenwiki.com",
+    "destPath": "/wiki/"
+  },
+  "melvor-idle.fandom.com": {
+    "destBase": "wiki.melvoridle.com",
+    "destPath": "/w/"
+  },
+  "merc-storia-english.fandom.com": {
+    "destBase": "mercstoria.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "micronations.fandom.com": {
+    "destBase": "micronations.wiki",
+    "destPath": "/wiki/"
+  },
+  "microcountries.fandom.com": {
+    "destBase": "micronations.wiki",
+    "destPath": "/wiki/"
+  },
+  "miiwiki.fandom.com": {
+    "destBase": "miiwiki.org",
+    "destPath": "/wiki/"
+  },
+  "milgram.fandom.com": {
+    "destBase": "milgram.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "milk-games.fandom.com": {
+    "destBase": "milk.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "mindhack.fandom.com": {
+    "destBase": "mindhack.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "minecraft.fandom.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "minecraft-archive.fandom.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "mcpc.fandom.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "minecraftbedrock-archive.fandom.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "mine-craft.fandom.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "minecraft.neoseeker.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "minecraftdungeons.wiki.fextralife.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "minecraftdungeons-archive.fandom.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "minecraft-the-movie.fandom.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "a-minecraft-movie.fandom.com": {
+    "destBase": "minecraft.wiki",
+    "destPath": "/w/"
+  },
+  "marvel-superheroes-mod.fandom.com": {
+    "destBase": "marvelsuperheroesmod.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "minehut.fandom.com": {
+    "destBase": "minehut.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "minehutmc.fandom.com": {
+    "destBase": "minehut.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "minicraft.fandom.com": {
+    "destBase": "minicraft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "miside.fandom.com": {
+    "destBase": "miside.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "monster-prom.fandom.com": {
+    "destBase": "monsterprom.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "monsters-and-memories.fandom.com": {
+    "destBase": "monstersandmemories.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "moshimonsters.fandom.com": {
+    "destBase": "moshimonsters.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "multiversus.fandom.com": {
+    "destBase": "multiversus.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "muse.fandom.com": {
+    "destBase": "musewiki.org",
+    "destPath": "/"
+  },
+  "mlp.fandom.com": {
+    "destBase": "equestripedia.org",
+    "destPath": "/wiki/"
+  },
+  "mylittlepony.neoseeker.com": {
+    "destBase": "equestripedia.org",
+    "destPath": "/wiki/"
+  },
+  "mlp-gameloft.fandom.com": {
+    "destBase": "mlp-game-wiki.no",
+    "destPath": "/index.php/"
+  },
+  "dni.fandom.com": {
+    "destBase": "archive.guildofarchivists.org",
+    "destPath": "/wiki/"
+  },
+  "mysterydungeon.fandom.com": {
+    "destBase": "mysterydungeonwiki.com",
+    "destPath": "/wiki/"
+  },
+  "pmd-rt-archive.fandom.com": {
+    "destBase": "mysterydungeonwiki.com",
+    "destPath": "/wiki/"
+  },
+  "nebulamancers.fandom.com": {
+    "destBase": "nebulamancers.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "necesse.fandom.com": {
+    "destBase": "necessewiki.com",
+    "destPath": "/"
+  },
+  "crypt-of-the-necrodancer.fandom.com": {
+    "destBase": "necrodancer.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "necromerger.fandom.com": {
+    "destBase": "necromerger.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "needy-streamer-overload.fandom.com": {
+    "destBase": "needystreameroverload.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "neocron-guide.fandom.com": {
+    "destBase": "wiki.techhaven.org",
+    "destPath": "/"
+  },
+  "nethack.fandom.com": {
+    "destBase": "nethackwiki.com",
+    "destPath": "/wiki/"
+  },
+  "newgrounds.fandom.com": {
+    "destBase": "newgrounds.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "nichijou.fandom.com": {
+    "destBase": "nichijou.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "nicos-nextbots.fandom.com": {
+    "destBase": "nicosnextbots.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "nightmare-reaper.fandom.com": {
+    "destBase": "nightmarereaper.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "nin.fandom.com": {
+    "destBase": "www.nin.wiki",
+    "destPath": "/"
+  },
+  "ninesols.fandom.com": {
+    "destBase": "ninesols.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "nitrome.fandom.com": {
+    "destBase": "nitrome.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "noita.fandom.com": {
+    "destBase": "noita.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "norland.fandom.com": {
+    "destBase": "hoodedhorse.com/wiki/Norland",
+    "destPath": "/"
+  },
+  "ntm.fandom.com": {
+    "destBase": "nucleartech.wiki",
+    "destPath": "/wiki/"
+  },
+  "oaklands.fandom.com": {
+    "destBase": "oaklandsrblxwiki.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "obey-me.fandom.com": {
+    "destBase": "obeymewiki.com",
+    "destPath": "/wiki/"
+  },
+  "oldschoolrunescape.fandom.com": {
+    "destBase": "oldschool.runescape.wiki",
+    "destPath": "/w/"
+  },
+  "omegastrikers.fandom.com": {
+    "destBase": "omegastrikers.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "oneshot.fandom.com": {
+    "destBase": "oneshot.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "openstreetmap-online.fandom.com": {
+    "destBase": "wiki.openstreetmap.org",
+    "destPath": "/wiki/"
+  },
+  "easternmind.fandom.com": {
+    "destBase": "compu-lsd.com",
+    "destPath": "/w/"
+  },
+  "oxygennotincluded.fandom.com": {
+    "destBase": "oxygennotincluded.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "pacific-drive.fandom.com": {
+    "destBase": "pacificdrive.wiki",
+    "destPath": "/view/"
+  },
+  "pale-beyond.fandom.com": {
+    "destBase": "thepalebeyond.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "palia.fandom.com": {
+    "destBase": "palia.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "palworld.fandom.com": {
+    "destBase": "palworld.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "pathfinder.fandom.com": {
+    "destBase": "pathfinderwiki.com",
+    "destPath": "/wiki/"
+  },
+  "path-of-achra.fandom.com": {
+    "destBase": "pathofachra.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "pathofexile.fandom.com": {
+    "destBase": "www.poewiki.net",
+    "destPath": "/wiki/"
+  },
+  "pathofexile2.wiki.fextralife.com": {
+    "destBase": "www.poe2wiki.net",
+    "destPath": "/wiki/"
+  },
+  "path-of-exile-2.fandom.com": {
+    "destBase": "www.poe2wiki.net",
+    "destPath": "/wiki/"
+  },
+  "pathologic.fandom.com": {
+    "destBase": "pathologic.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "path-to-nowhere.fandom.com": {
+    "destBase": "pathtonowhere.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "pcsx2-emu.fandom.com": {
+    "destBase": "wiki.pcsx2.net",
+    "destPath": "/"
+  },
+  "peglin.fandom.com": {
+    "destBase": "peglin.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "penguinmod.fandom.com": {
+    "destBase": "wiki.penguinmod.com",
+    "destPath": "/wiki/"
+  },
+  "phighting.fandom.com": {
+    "destBase": "phighting.wiki",
+    "destPath": "/wiki/"
+  },
+  "picross.fandom.com": {
+    "destBase": "picross.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "pikmin.fandom.com": {
+    "destBase": "www.pikminwiki.com",
+    "destPath": "/"
+  },
+  "pikmin.neoseeker.com": {
+    "destBase": "www.pikminwiki.com",
+    "destPath": "/"
+  },
+  "pikminfanon.fandom.com": {
+    "destBase": "pikminfanon.com",
+    "destPath": "/wiki/"
+  },
+  "pixarcars.fandom.com": {
+    "destBase": "dpcarswiki.com",
+    "destPath": "/"
+  },
+  "pixelgun.fandom.com": {
+    "destBase": "pg3d.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "pizzatower.fandom.com": {
+    "destBase": "pizzatower.wiki",
+    "destPath": "/wiki/"
+  },
+  "plagueinc.fandom.com": {
+    "destBase": "plagueinc.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "plantsvszombies.fandom.com": {
+    "destBase": "plantsvszombies.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "plural.fandom.com": {
+    "destBase": "pluralpedia.org",
+    "destPath": "/w/"
+  },
+  "pokemon.fandom.com": {
+    "destBase": "bulbapedia.bulbagarden.net",
+    "destPath": "/wiki/"
+  },
+  "pokemon-archive.fandom.com": {
+    "destBase": "bulbapedia.bulbagarden.net",
+    "destPath": "/wiki/"
+  },
+  "pokemon.neoseeker.com": {
+    "destBase": "bulbapedia.bulbagarden.net",
+    "destPath": "/wiki/"
+  },
+  "pokemonunbound.fandom.com": {
+    "destBase": "pokemonunbound.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "popira.fandom.com": {
+    "destBase": "popira20.com/wiki",
+    "destPath": "/index.php?title="
+  },
+  "portals.fandom.com": {
+    "destBase": "theportalwiki.com",
+    "destPath": "/wiki/"
+  },
+  "portal-valve.fandom.com": {
+    "destBase": "theportalwiki.com",
+    "destPath": "/wiki/"
+  },
+  "portalinfo.fandom.com": {
+    "destBase": "theportalwiki.com",
+    "destPath": "/wiki/"
+  },
+  "pou.fandom.com": {
+    "destBase": "poupedia.com",
+    "destPath": "/"
+  },
+  "prison-architect.fandom.com": {
+    "destBase": "prisonarchitect.paradoxwikis.com",
+    "destPath": "/"
+  },
+  "project-mili.fandom.com": {
+    "destBase": "mili.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "projectsekai.fandom.com": {
+    "destBase": "www.sekaipedia.org",
+    "destPath": "/wiki/"
+  },
+  "projectwingman.fandom.com": {
+    "destBase": "projectwingman.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "projectzomboid.fandom.com": {
+    "destBase": "pzwiki.net",
+    "destPath": "/wiki/"
+  },
+  "protochroma.fandom.com": {
+    "destBase": "protochroma.wiki",
+    "destPath": "/view/"
+  },
+  "pubg.fandom.com": {
+    "destBase": "pubg.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "arleandcarbuncle.fandom.com": {
+    "destBase": "puyonexus.com",
+    "destPath": "/wiki/"
+  },
+  "python.fandom.com": {
+    "destBase": "wiki.python.org",
+    "destPath": "/moin/"
+  },
+  "rain-web-comic.fandom.com": {
+    "destBase": "rainverse.wiki",
+    "destPath": "/wiki/"
+  },
+  "rain-webcomic.fandom.com": {
+    "destBase": "rainverse.wiki",
+    "destPath": "/wiki/"
+  },
+  "myimpossiblesoulmate.fandom.com": {
+    "destBase": "rainverse.wiki",
+    "destPath": "/wiki/"
+  },
+  "rain-world-game.fandom.com": {
+    "destBase": "rainworld.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "rain-world07.fandom.com": {
+    "destBase": "rainworld.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "rammstein.fandom.com": {
+    "destBase": "rammwiki.net",
+    "destPath": "/wiki/"
+  },
+  "rayman.fandom.com": {
+    "destBase": "raymanpc.com",
+    "destPath": "/wiki/en/"
+  },
+  "raymanpedia.fandom.com": {
+    "destBase": "raymanpc.com",
+    "destPath": "/wiki/en/"
+  },
+  "rayman-game.fandom.com": {
+    "destBase": "raymanpc.com",
+    "destPath": "/wiki/en/"
+  },
+  "ubisoftrayman.fandom.com": {
+    "destBase": "raymanpc.com",
+    "destPath": "/wiki/en/"
+  },
+  "rct.fandom.com": {
+    "destBase": "rct.wiki",
+    "destPath": "/wiki/"
+  },
+  "real-space-4-animation.fandom.com": {
+    "destBase": "realspace4animation.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "red-flood.fandom.com": {
+    "destBase": "redflood.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "remnant2.wiki.fextralife.com": {
+    "destBase": "remnant.wiki",
+    "destPath": "/"
+  },
+  "rhythm-doctor.fandom.com": {
+    "destBase": "wiki.rhythm.cafe",
+    "destPath": "/page/"
+  },
+  "rhythmheaven.fandom.com": {
+    "destBase": "rhwiki.net",
+    "destPath": "/wiki/"
+  },
+  "ricochet-universe.fandom.com": {
+    "destBase": "wiki.ricochetuniverse.com",
+    "destPath": "/wiki/"
+  },
+  "ricochetlw.fandom.com": {
+    "destBase": "wiki.ricochetuniverse.com",
+    "destPath": "/wiki/"
+  },
+  "mahjong.fandom.com": {
+    "destBase": "riichi.wiki",
+    "destPath": "/"
+  },
+  "rimworld.fandom.com": {
+    "destBase": "rimworldwiki.com",
+    "destPath": "/wiki/"
+  },
+  "riskofrain.fandom.com": {
+    "destBase": "riskofrain.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "riskofrain2.fandom.com": {
+    "destBase": "riskofrain2.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "rlcraft.fandom.com": {
+    "destBase": "rlcraft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "roblox-critical-strike.fandom.com": {
+    "destBase": "robloxcriticalstrike.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "pressure.fandom.com": {
+    "destBase": "urbanshade.org",
+    "destPath": "/wiki/"
+  },
+  "pressure-roblox.fandom.com": {
+    "destBase": "urbanshade.org",
+    "destPath": "/wiki/"
+  },
+  "rogue-legacy.fandom.com": {
+    "destBase": "roguelegacy.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "rollercoaster.fandom.com": {
+    "destBase": "coasterpedia.net",
+    "destPath": "/wiki/"
+  },
+  "rootsofpacha.fandom.com": {
+    "destBase": "rootsofpacha.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "runescape.fandom.com": {
+    "destBase": "runescape.wiki",
+    "destPath": "/w/"
+  },
+  "runescape.neoseeker.com": {
+    "destBase": "runescape.wiki",
+    "destPath": "/w/"
+  },
+  "runescapeclassic.fandom.com": {
+    "destBase": "classic.runescape.wiki",
+    "destPath": "/w/"
+  },
+  "saga.fandom.com": {
+    "destBase": "sagawiki.org",
+    "destPath": "/wiki/"
+  },
+  "sailormoon.fandom.com": {
+    "destBase": "wikimoon.org",
+    "destPath": "/index.php/"
+  },
+  "saintsrow.fandom.com": {
+    "destBase": "saintsrow.wiki",
+    "destPath": "/wiki/"
+  },
+  "salemcraftingmmo.fandom.com": {
+    "destBase": "salemthegame.wiki",
+    "destPath": "/page/"
+  },
+  "sandboxels.fandom.com": {
+    "destBase": "sandboxels.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "sanrio.fandom.com": {
+    "destBase": "sanriowiki.com",
+    "destPath": "/wiki/"
+  },
+  "satisfactory.fandom.com": {
+    "destBase": "satisfactory.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "schlockmercenary.fandom.com": {
+    "destBase": "www.ovalkwiki.com",
+    "destPath": "/index.php?title="
+  },
+  "scp-secret-laboratory.fandom.com": {
+    "destBase": "en.scpslgame.com",
+    "destPath": "/index.php?title="
+  },
+  "scrabdackle.fandom.com": {
+    "destBase": "scrabdackle.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "seaofthieves.fandom.com": {
+    "destBase": "seaofthieves.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "sega.fandom.com": {
+    "destBase": "segaretro.org",
+    "destPath": "/"
+  },
+  "chunithm.fandom.com": {
+    "destBase": "silentblue.remywiki.com",
+    "destPath": "/"
+  },
+  "maimai-intl.fandom.com": {
+    "destBase": "silentblue.remywiki.com",
+    "destPath": "/"
+  },
+  "maimaieng.fandom.com": {
+    "destBase": "silentblue.remywiki.com",
+    "destPath": "/"
+  },
+  "ongeki.fandom.com": {
+    "destBase": "silentblue.remywiki.com",
+    "destPath": "/"
+  },
+  "lain.fandom.com": {
+    "destBase": "lain.wiki",
+    "destPath": "/wiki/"
+  },
+  "severance-tv.fandom.com": {
+    "destBase": "severance.wiki",
+    "destPath": "/"
+  },
+  "shinycolors.fandom.com": {
+    "destBase": "shinycolors.wiki",
+    "destPath": "/wiki/"
+  },
+  "ship-of-fools.fandom.com": {
+    "destBase": "shipoffools.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "shroudoftheavatar.fandom.com": {
+    "destBase": "sotawiki.net",
+    "destPath": "/sota/"
+  },
+  "signalis.fandom.com": {
+    "destBase": "signalis.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "siivagunner.fandom.com": {
+    "destBase": "siivagunner.wiki",
+    "destPath": "/wiki/"
+  },
+  "simpsons.fandom.com": {
+    "destBase": "simpsonswiki.com",
+    "destPath": "/wiki/"
+  },
+  "simpsons.neoseeker.com": {
+    "destBase": "simpsonswiki.com",
+    "destPath": "/wiki/"
+  },
+  "skibidi-toilet.fandom.com": {
+    "destBase": "skibidi-toilet.wiki",
+    "destPath": "/"
+  },
+  "skylanders.fandom.com": {
+    "destBase": "skylanderswiki.com",
+    "destPath": "/wiki/"
+  },
+  "skylanders.neoseeker.com": {
+    "destBase": "skylanderswiki.com",
+    "destPath": "/wiki/"
+  },
+  "slarpg.fandom.com": {
+    "destBase": "slarpg.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "slay-the-spire.fandom.com": {
+    "destBase": "slaythespire.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "slycooper.fandom.com": {
+    "destBase": "slycooper.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "sm64-speedrun.fandom.com": {
+    "destBase": "ukikipedia.net",
+    "destPath": "/wiki/"
+  },
+  "roblox-sc.fandom.com": {
+    "destBase": "wiki.solarconquest.net",
+    "destPath": "/wiki/"
+  },
+  "songs-of-syx.fandom.com": {
+    "destBase": "songsofsyx.com/wiki",
+    "destPath": "/index.php/"
+  },
+  "sonny.fandom.com": {
+    "destBase": "sonny.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "sonsoftheforest.fandom.com": {
+    "destBase": "sonsoftheforest.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "sons-of-valhalla.fandom.com": {
+    "destBase": "hoodedhorse.com/wiki/Sons_of_Valhalla",
+    "destPath": "/"
+  },
+  "soulframe.wiki.fextralife.com": {
+    "destBase": "soulframe.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "southpark.fandom.com": {
+    "destBase": "southpark.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "spaceengineers.fandom.com": {
+    "destBase": "spaceengineers.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "space-pioneers.fandom.com": {
+    "destBase": "spacepioneers.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "spacestation13.fandom.com": {
+    "destBase": "wiki.ss13.co",
+    "destPath": "/"
+  },
+  "space-station-14.fandom.com": {
+    "destBase": "wiki.spacestation14.com",
+    "destPath": "/wiki/"
+  },
+  "spiritmod.fandom.com": {
+    "destBase": "spiritmod.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "splatoon.fandom.com": {
+    "destBase": "splatoonwiki.org",
+    "destPath": "/wiki/"
+  },
+  "spyro.fandom.com": {
+    "destBase": "spyrowiki.com",
+    "destPath": "/wiki/"
+  },
+  "spyro.neoseeker.com": {
+    "destBase": "spyrowiki.com",
+    "destPath": "/wiki/"
+  },
+  "starbound.fandom.com": {
+    "destBase": "starbounder.org",
+    "destPath": "/"
+  },
+  "starcitizen.fandom.com": {
+    "destBase": "starcitizen.tools",
+    "destPath": "/"
+  },
+  "stardewvalley.fandom.com": {
+    "destBase": "stardewvalleywiki.com",
+    "destPath": "/"
+  },
+  "starfield.fandom.com": {
+    "destBase": "starfieldwiki.net",
+    "destPath": "/wiki/"
+  },
+  "starfield.wiki.fextralife.com": {
+    "destBase": "starfieldwiki.net",
+    "destPath": "/wiki/"
+  },
+  "starfy.fandom.com": {
+    "destBase": "www.starfywiki.org",
+    "destPath": "/wiki/"
+  },
+  "starsector.fandom.com": {
+    "destBase": "starsector.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "jorvikipedia.fandom.com": {
+    "destBase": "starstable.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "steamworld.fandom.com": {
+    "destBase": "steamworld.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "sto.fandom.com": {
+    "destBase": "stowiki.net",
+    "destPath": "/wiki/"
+  },
+  "stone-story-rpg.fandom.com": {
+    "destBase": "stonestoryrpg.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "strinova.fandom.com": {
+    "destBase": "strinova.org",
+    "destPath": "/wiki/"
+  },
+  "sugary-spire.fandom.com": {
+    "destBase": "sugaryspire.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "suikoden.fandom.com": {
+    "destBase": "gensopedia.org",
+    "destPath": "/w/"
+  },
+  "sun-haven.fandom.com": {
+    "destBase": "sunhaven.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "sunlesssea.fandom.com": {
+    "destBase": "sunlesssea.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "sunlessskies.fandom.com": {
+    "destBase": "sunlessskies.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "superautopets.fandom.com": {
+    "destBase": "superautopets.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "supermonkeyball.fandom.com": {
+    "destBase": "bananapedia.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "supersmashbros.fandom.com": {
+    "destBase": "www.ssbwiki.com",
+    "destPath": "/"
+  },
+  "smashbros.neoseeker.com": {
+    "destBase": "www.ssbwiki.com",
+    "destPath": "/"
+  },
+  "super-snail.fandom.com": {
+    "destBase": "supersnail.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "survivingmars.fandom.com": {
+    "destBase": "survivingmars.paradoxwikis.com",
+    "destPath": "/"
+  },
+  "synthetik.fandom.com": {
+    "destBase": "synthetikuniverse.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "tallyhall.fandom.com": {
+    "destBase": "www.hiddeninthesand.com",
+    "destPath": "/wiki/"
+  },
+  "coffin-of-andy-and-leyley.fandom.com": {
+    "destBase": "coffin.wiki",
+    "destPath": "/wiki/"
+  },
+  "teamfortress.fandom.com": {
+    "destBase": "wiki.teamfortress.com",
+    "destPath": "/wiki/"
+  },
+  "tearsofthemis.fandom.com": {
+    "destBase": "tot.wiki",
+    "destPath": "/wiki/"
+  },
+  "tempestrising.fandom.com": {
+    "destBase": "tempestrising.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "temtem.fandom.com": {
+    "destBase": "temtem.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "terra-invicta.fandom.com": {
+    "destBase": "hoodedhorse.com/wiki/Terra_Invicta",
+    "destPath": "/"
+  },
+  "terrainvictagame.fandom.com": {
+    "destBase": "hoodedhorse.com/wiki/Terra_Invicta",
+    "destPath": "/"
+  },
+  "terraria.fandom.com": {
+    "destBase": "terraria.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "terraria-archive.fandom.com": {
+    "destBase": "terraria.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "terraria.neoseeker.com": {
+    "destBase": "terraria.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "terraria-starlight-river.fandom.com": {
+    "destBase": "starlightrivermod.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "discworld.fandom.com": {
+    "destBase": "wiki.lspace.org",
+    "destPath": "/"
+  },
+  "the-broken-script.fandom.com": {
+    "destBase": "thebrokenscript.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "the-celestial-caverns.fandom.com": {
+    "destBase": "thecelestialcaverns.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "thecyclefrontier.fandom.com": {
+    "destBase": "thecyclefrontier.wiki",
+    "destPath": "/wiki/"
+  },
+  "thefifthcity.fandom.com": {
+    "destBase": "thefifthcity.wiki",
+    "destPath": "/wiki/"
+  },
+  "the-finals.fandom.com": {
+    "destBase": "www.thefinals.wiki",
+    "destPath": "/wiki/"
+  },
+  "the-fire-rises-unoffical-database.fandom.com": {
+    "destBase": "thefireriseswiki.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "the-matchless-kungfu.fandom.com": {
+    "destBase": "thematchlesskungfu.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "thewanderinginn.fandom.com": {
+    "destBase": "wiki.wanderinginn.com",
+    "destPath": "/"
+  },
+  "twewy.fandom.com": {
+    "destBase": "twewy.wiki",
+    "destPath": "/wiki/"
+  },
+  "theymightbegiants.fandom.com": {
+    "destBase": "tmbw.net",
+    "destPath": "/wiki/"
+  },
+  "thoriummod.fandom.com": {
+    "destBase": "thoriummod.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "thunderbolt-fantasy.fandom.com": {
+    "destBase": "thunderboltfantasywiki.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "timberborn.fandom.com": {
+    "destBase": "timberborn.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "timespinner.fandom.com": {
+    "destBase": "timespinnerwiki.com",
+    "destPath": "/"
+  },
+  "tincan.fandom.com": {
+    "destBase": "tincan.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "tiny-rogues.fandom.com": {
+    "destBase": "roguepedia.net",
+    "destPath": "/w/"
+  },
+  "titanfall.fandom.com": {
+    "destBase": "titanfall.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "tombraider.fandom.com": {
+    "destBase": "www.wikiraider.com",
+    "destPath": "/index.php/"
+  },
+  "toontown.fandom.com": {
+    "destBase": "toontown.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "toontown-corporate-clash.fandom.com": {
+    "destBase": "corporateclash.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "toontownrewritten.fandom.com": {
+    "destBase": "toontownrewritten.wiki",
+    "destPath": "/"
+  },
+  "torncity.fandom.com": {
+    "destBase": "wiki.torn.com",
+    "destPath": "/wiki/"
+  },
+  "touhou.fandom.com": {
+    "destBase": "en.touhouwiki.net",
+    "destPath": "/wiki/"
+  },
+  "towerclimb.fandom.com": {
+    "destBase": "towerclimb.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "towerfall.fandom.com": {
+    "destBase": "towerfall.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "tower-unite.fandom.com": {
+    "destBase": "towerunite.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "transformers.fandom.com": {
+    "destBase": "tfwiki.net",
+    "destPath": "/wiki/"
+  },
+  "traveller-rpg.fandom.com": {
+    "destBase": "wiki.travellerrpg.com",
+    "destPath": "/"
+  },
+  "treasureadventuregame.fandom.com": {
+    "destBase": "treasureadventurewiki.com",
+    "destPath": "/"
+  },
+  "truck-simulator.fandom.com": {
+    "destBase": "trucksimulator.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "twoworlds.fandom.com": {
+    "destBase": "twoworldswiki.com",
+    "destPath": "/wiki/"
+  },
+  "tw2.fandom.com": {
+    "destBase": "twoworldswiki.com",
+    "destPath": "/wiki/"
+  },
+  "ubfunkeys.fandom.com": {
+    "destBase": "ubfunkeys.wiki",
+    "destPath": "/index.php?title="
+  },
+  "ufo50.fandom.com": {
+    "destBase": "ufo50.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "ultimaonline.fandom.com": {
+    "destBase": "www.uoguide.com",
+    "destPath": "/"
+  },
+  "ultrakill.fandom.com": {
+    "destBase": "ultrakill.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "umamusume.fandom.com": {
+    "destBase": "umamusu.wiki",
+    "destPath": "/"
+  },
+  "uncompromising-mode.fandom.com": {
+    "destBase": "uncompromisingmode.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "undermine.fandom.com": {
+    "destBase": "undermine.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "undertale.fandom.com": {
+    "destBase": "undertale.wiki",
+    "destPath": "/w/"
+  },
+  "undertale-archive.fandom.com": {
+    "destBase": "undertale.wiki",
+    "destPath": "/w/"
+  },
+  "undertaleyellow.fandom.com": {
+    "destBase": "undertaleyellow.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "outotsuyume.fandom.com": {
+    "destBase": "yume.wiki",
+    "destPath": "/"
+  },
+  "usi.fandom.com": {
+    "destBase": "usi.game-vault.net",
+    "destPath": "/wiki/"
+  },
+  "unrealworld.fandom.com": {
+    "destBase": "www.unrealworld.fi",
+    "destPath": "/wiki/index.php?title="
+  },
+  "utg.fandom.com": {
+    "destBase": "utg.miraheze.org",
+    "destPath": "/"
+  },
+  "unturned.fandom.com": {
+    "destBase": "unturned.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "usagishima.fandom.com": {
+    "destBase": "usagishima.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "utanoprincesama.fandom.com": {
+    "destBase": "utanoprincesama.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "vampire-survivors.fandom.com": {
+    "destBase": "vampire.survivors.wiki",
+    "destPath": "/w/"
+  },
+  "vaporwave.fandom.com": {
+    "destBase": "vaporwave.wiki",
+    "destPath": "/wiki/"
+  },
+  "vectorio.fandom.com": {
+    "destBase": "vectorio.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "vendetta-online.fandom.com": {
+    "destBase": "vo-wiki.com",
+    "destPath": "/wiki/"
+  },
+  "vocaloidlyrics.fandom.com": {
+    "destBase": "vocaloidlyrics.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "votv.fandom.com": {
+    "destBase": "voicesofthevoid.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "the-void-rains-upon-her-heart.fandom.com": {
+    "destBase": "tvruhh.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "voidscape.fandom.com": {
+    "destBase": "voidscape.tamaized.com",
+    "destPath": "/index.php/"
+  },
+  "volcano-princess.fandom.com": {
+    "destBase": "volcanoprincess.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "vtol-vr.fandom.com": {
+    "destBase": "vtolvr.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "vvvvvv.fandom.com": {
+    "destBase": "vsix.dev",
+    "destPath": "/wiki/"
+  },
+  "spacestation.fandom.com": {
+    "destBase": "vsix.dev",
+    "destPath": "/wiki/"
+  },
+  "vylet-pony.fandom.com": {
+    "destBase": "vylet.wiki",
+    "destPath": "/"
+  },
+  "wakfu.fandom.com": {
+    "destBase": "wakfu.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "wakfu.neoseeker.com": {
+    "destBase": "wakfu.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "wowpedia.fandom.com": {
+    "destBase": "warcraft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "wowwiki-archive.fandom.com": {
+    "destBase": "warcraft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "warcraft.neoseeker.com": {
+    "destBase": "warcraft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "wow.neoseeker.com": {
+    "destBase": "warcraft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "warframe.fandom.com": {
+    "destBase": "wiki.warframe.com",
+    "destPath": "/w/"
+  },
+  "wargroove.fandom.com": {
+    "destBase": "wargroovewiki.com",
+    "destPath": "/"
+  },
+  "warhammer40k.fandom.com": {
+    "destBase": "wh40k.lexicanum.com",
+    "destPath": "/wiki/"
+  },
+  "warhammer.neoseeker.com": {
+    "destBase": "wh40k.lexicanum.com",
+    "destPath": "/wiki/"
+  },
+  "webfishing.fandom.com": {
+    "destBase": "webfishing.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "weezer.fandom.com": {
+    "destBase": "www.weezerpedia.com",
+    "destPath": "/wiki/"
+  },
+  "wesnoth.fandom.com": {
+    "destBase": "wiki.wesnoth.org",
+    "destPath": "/"
+  },
+  "wot.fandom.com": {
+    "destBase": "library.tarvalon.net",
+    "destPath": "/index.php?title="
+  },
+  "white-knuckle.fandom.com": {
+    "destBase": "whiteknuckle.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "wildfrost.fandom.com": {
+    "destBase": "wildfrostwiki.com",
+    "destPath": "/"
+  },
+  "willyousnail.fandom.com": {
+    "destBase": "willyousnail.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "windowkill.fandom.com": {
+    "destBase": "windowkill.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "witchfire.fandom.com": {
+    "destBase": "witchfire.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "witch-hat-atelier.fandom.com": {
+    "destBase": "witchhatatelier.telepedia.net",
+    "destPath": "/wiki/"
+  },
+  "wizard101.fandom.com": {
+    "destBase": "wiki.wizard101central.com/wiki",
+    "destPath": "/"
+  },
+  "wizardry.fandom.com": {
+    "destBase": "wizardry.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "world-of-babel.fandom.com": {
+    "destBase": "worldofbabel.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "worldtrigger.fandom.com": {
+    "destBase": "worldtriggerwiki.com",
+    "destPath": "/wiki/"
+  },
+  "worshipcrg.fandom.com": {
+    "destBase": "worship.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "wrdminecraft.fandom.com": {
+    "destBase": "wesleysroguelikedungeons.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "wvyernrpg.fandom.com": {
+    "destBase": "wiki.wyvernsource.com",
+    "destPath": "/index.php/"
+  },
+  "wynncraft.fandom.com": {
+    "destBase": "wynncraft.wiki.gg",
+    "destPath": "/wiki/"
+  },
+  "xenharmonic.fandom.com": {
+    "destBase": "en.xen.wiki",
+    "destPath": "/w/"
+  },
+  "xkcd.fandom.com": {
+    "destBase": "www.explainxkcd.com",
+    "destPath": "/wiki/index.php/"
+  },
+  "yiikapostmodernrpg.fandom.com": {
+    "destBase": "onism1999.com",
+    "destPath": "/wiki/"
+  },
+  "yohaji.fandom.com": {
+    "destBase": "yohaji.miraheze.org",
+    "destPath": "/wiki/"
+  },
+  "yugioh.fandom.com": {
+    "destBase": "yugipedia.com",
+    "destPath": "/wiki/"
+  },
+  "yugioh-duel-monsters.fandom.com": {
+    "destBase": "yugipedia.com",
+    "destPath": "/wiki/"
+  },
+  "yugioh-5ds.fandom.com": {
+    "destBase": "yugipedia.com",
+    "destPath": "/wiki/"
+  },
+  "yugioh-zexal.fandom.com": {
+    "destBase": "yugipedia.com",
+    "destPath": "/wiki/"
+  },
+  "yugioh-arcv.fandom.com": {
+    "destBase": "yugipedia.com",
+    "destPath": "/wiki/"
+  },
+  "yugioh-vrains.fandom.com": {
+    "destBase": "yugipedia.com",
+    "destPath": "/wiki/"
+  },
+  "yugioh-sevens.fandom.com": {
+    "destBase": "yugipedia.com",
+    "destPath": "/wiki/"
+  },
+  "yugioh.neoseeker.com": {
+    "destBase": "yugipedia.com",
+    "destPath": "/wiki/"
+  },
+  "yume2kki.fandom.com": {
+    "destBase": "yume.wiki",
+    "destPath": "/"
+  },
+  "yumenikki.fandom.com": {
+    "destBase": "yume.wiki",
+    "destPath": "/"
+  },
+  "yumenikkifg.fandom.com": {
+    "destBase": "ynfg.yume.wiki",
+    "destPath": "/"
+  },
+  "zelda.fandom.com": {
+    "destBase": "zeldawiki.wiki",
+    "destPath": "/wiki/"
+  },
+  "zelda-archive.fandom.com": {
+    "destBase": "zeldawiki.wiki",
+    "destPath": "/wiki/"
+  },
+  "zelda.neoseeker.com": {
+    "destBase": "zeldawiki.wiki",
+    "destPath": "/wiki/"
+  },
+  "zeldatearsofthekingdom.wiki.fextralife.com": {
+    "destBase": "zeldawiki.wiki",
+    "destPath": "/wiki/"
+  },
+  "zeroranger.fandom.com": {
+    "destBase": "zeroranger.miraheze.org",
+    "destPath": "/wiki/"
+  }
+}
