@@ -53,25 +53,39 @@
             // We'll fetch it from the extension resources and look for a match.
             let datapackMatch = null;
             try {
-                const dpUrl = browser.runtime.getURL('indies/datapack.json');
-                const resp = await fetch(dpUrl);
-                if (resp && resp.ok) {
-                    const dp = await resp.json();
-                    // dp is an array of entries. Search for a matching origin_base_url
-                    for (const entry of dp) {
-                        if (!entry.origins) continue;
-                        for (const o of entry.origins) {
-                            if (!o.origin_base_url) continue;
-                            if (o.origin_base_url.toLowerCase() === host) {
-                                datapackMatch = entry;
-                                break;
+                const candidates = [
+                    'indies/datapack.json',
+                    'Resources/indies/datapack.json',
+                    '../indies/datapack.json',
+                    '/indies/datapack.json'
+                ];
+                for (const rel of candidates) {
+                    try {
+                        const dpUrl = browser.runtime.getURL(rel);
+                        const resp = await fetch(dpUrl);
+                        if (resp && resp.ok) {
+                            const dp = await resp.json();
+                            // dp is an array of entries. Search for a matching origin_base_url
+                            for (const entry of dp) {
+                                if (!entry.origins) continue;
+                                for (const o of entry.origins) {
+                                    if (!o.origin_base_url) continue;
+                                    if (o.origin_base_url.toLowerCase() === host) {
+                                        datapackMatch = entry;
+                                        break;
+                                    }
+                                }
+                                if (datapackMatch) break;
                             }
                         }
-                        if (datapackMatch) break;
+                    } catch (inner) {
+                        // try next candidate
+                        continue;
                     }
+                    if (datapackMatch) break;
                 }
             } catch (e) {
-                // If datapack can't be read, ignore and fall back to mirrors list
+                // If datapack can't be read at all, ignore and fall back to mirrors list
                 console.warn('Flean: failed to load datapack.json', e);
             }
 
@@ -115,6 +129,19 @@
             // If we're already on a mirror host, do nothing.
             if (host === selectedMirror || (store.mirrors || []).includes(host)) return;
 
+            // If we matched a datapack entry, prefer applying that mapping.
+            // Auto-apply datapack mappings unless the user asked to be prompted.
+            if (datapackMatch) {
+                if (askOnVisit) {
+                    console.log('Flean: datapack mapping found for', host, '- asking before redirect');
+                    // fall through to show overlay so user can confirm
+                } else {
+                    console.log('Flean: auto-redirecting via datapack', url.href, '->', mirrorUrl);
+                    window.location.replace(mirrorUrl);
+                    return;
+                }
+            }
+
             // If current host or full URL is in the configured list, either auto-redirect
             // or show the interstitial depending on the askOnVisit setting.
             if (allowedSites.includes(host) || allowedSites.includes(url.href)) {
@@ -126,6 +153,15 @@
                     window.location.replace(mirrorUrl);
                     return;
                 }
+            }
+
+            // If the user has disabled asking on visit, do not inject the overlay.
+            // Previously we always showed the interstitial for unknown hosts which
+            // made "Ask every time" behave counter-intuitively. If we reach here
+            // and askOnVisit is false, just allow the page to load.
+            if (!askOnVisit) {
+                console.log('Flean: askOnVisit is false — skipping interstitial for', host);
+                return;
             }
 
             // Inject a minimal overlay UI so the user can choose what to do.
