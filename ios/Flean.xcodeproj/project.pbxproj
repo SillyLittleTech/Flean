@@ -1,0 +1,627 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+/* (Flean Extension.appex build file removed for iOS project) */
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+/* (container item proxies preserved; extension proxy removed from iOS project) */
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C220401A2EB3D356005D9297 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				/* no embedded app extensions for iOS target */
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C2203FC82EB3D352005D9297 /* Flean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flean.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2203FE42EB3D356005D9297 /* FleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2203FEE2EB3D356005D9297 /* FleanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FleanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+	/* Flean Extension.appex file reference removed from iOS project (macOS-only .appex) */
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+/* (Exceptions for macOS extension removed from iOS project) */
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		C2203FCA2EB3D352005D9297 /* Flean */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Flean;
+			sourceTree = "<group>";
+		};
+		C2203FE72EB3D356005D9297 /* FleanTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FleanTests;
+			sourceTree = "<group>";
+		};
+		C2203FF12EB3D356005D9297 /* FleanUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FleanUITests;
+			sourceTree = "<group>";
+		};
+		C2203FFE2EB3D356005D9297 /* Flean Extension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFolders = (
+				Resources/_locales,
+				Resources/images,
+			);
+			path = "Flean Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2203FC52EB3D352005D9297 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FE12EB3D356005D9297 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FEB2EB3D356005D9297 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FF72EB3D356005D9297 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C2203FBF2EB3D352005D9297 = {
+			isa = PBXGroup;
+			children = (
+				C2203FCA2EB3D352005D9297 /* Flean */,
+				C2203FE72EB3D356005D9297 /* FleanTests */,
+				C2203FF12EB3D356005D9297 /* FleanUITests */,
+				C2203FFE2EB3D356005D9297 /* Flean Extension */,
+				C2203FC92EB3D352005D9297 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C2203FC92EB3D352005D9297 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2203FC82EB3D352005D9297 /* Flean.app */,
+				C2203FE42EB3D356005D9297 /* FleanTests.xctest */,
+				C2203FEE2EB3D356005D9297 /* FleanUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2203FC72EB3D352005D9297 /* Flean */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C220401B2EB3D356005D9297 /* Build configuration list for PBXNativeTarget "Flean" */;
+			buildPhases = (
+				C2203FC42EB3D352005D9297 /* Sources */,
+				C2203FC52EB3D352005D9297 /* Frameworks */,
+				C2203FC62EB3D352005D9297 /* Resources */,
+				C220401A2EB3D356005D9297 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2203FFD2EB3D356005D9297 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C2203FCA2EB3D352005D9297 /* Flean */,
+			);
+			name = Flean;
+			packageProductDependencies = (
+			);
+			productName = Flean;
+			productReference = C2203FC82EB3D352005D9297 /* Flean.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2203FE32EB3D356005D9297 /* FleanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C220401E2EB3D356005D9297 /* Build configuration list for PBXNativeTarget "FleanTests" */;
+			buildPhases = (
+				C2203FE02EB3D356005D9297 /* Sources */,
+				C2203FE12EB3D356005D9297 /* Frameworks */,
+				C2203FE22EB3D356005D9297 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2203FE62EB3D356005D9297 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C2203FE72EB3D356005D9297 /* FleanTests */,
+			);
+			name = FleanTests;
+			packageProductDependencies = (
+			);
+			productName = FleanTests;
+			productReference = C2203FE42EB3D356005D9297 /* FleanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C2203FED2EB3D356005D9297 /* FleanUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C22040212EB3D356005D9297 /* Build configuration list for PBXNativeTarget "FleanUITests" */;
+			buildPhases = (
+				C2203FEA2EB3D356005D9297 /* Sources */,
+				C2203FEB2EB3D356005D9297 /* Frameworks */,
+				C2203FEC2EB3D356005D9297 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2203FF02EB3D356005D9297 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C2203FF12EB3D356005D9297 /* FleanUITests */,
+			);
+			name = FleanUITests;
+			packageProductDependencies = (
+			);
+			productName = FleanUITests;
+			productReference = C2203FEE2EB3D356005D9297 /* FleanUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		/* Flean Extension target removed from iOS project (macOS-only) */
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2203FC02EB3D352005D9297 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					C2203FC72EB3D352005D9297 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					C2203FE32EB3D356005D9297 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = C2203FC72EB3D352005D9297;
+					};
+					C2203FED2EB3D356005D9297 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = C2203FC72EB3D352005D9297;
+					};
+				};
+			};
+			buildConfigurationList = C2203FC32EB3D352005D9297 /* Build configuration list for PBXProject "Flean" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C2203FBF2EB3D352005D9297;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C2203FC92EB3D352005D9297 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2203FC72EB3D352005D9297 /* Flean */,
+				C2203FE32EB3D356005D9297 /* FleanTests */,
+				C2203FED2EB3D356005D9297 /* FleanUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2203FC62EB3D352005D9297 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FE22EB3D356005D9297 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FEC2EB3D356005D9297 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FF82EB3D356005D9297 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2203FC42EB3D352005D9297 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FE02EB3D356005D9297 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FEA2EB3D356005D9297 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2203FF62EB3D356005D9297 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2203FE62EB3D356005D9297 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2203FC72EB3D352005D9297 /* Flean */;
+			targetProxy = C2203FE52EB3D356005D9297 /* PBXContainerItemProxy */;
+		};
+		C2203FF02EB3D356005D9297 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2203FC72EB3D352005D9297 /* Flean */;
+			targetProxy = C2203FEF2EB3D356005D9297 /* PBXContainerItemProxy */;
+		};
+		/* PBXTargetDependency for macOS extension removed in iOS project */
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		/* Build configurations for macOS extension removed from iOS project */
+		C22040182EB3D356005D9297 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = PWL627GZ4Y;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C22040192EB3D356005D9297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PWL627GZ4Y;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		C220401C2EB3D356005D9297 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Flean/Flean.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PWL627GZ4Y;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Flean;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = slf.Flean;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C220401D2EB3D356005D9297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Flean/Flean.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PWL627GZ4Y;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Flean;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = slf.Flean;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C220401F2EB3D356005D9297 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PWL627GZ4Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = slf.FleanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flean.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Flean";
+			};
+			name = Debug;
+		};
+		C22040202EB3D356005D9297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PWL627GZ4Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = slf.FleanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flean.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Flean";
+			};
+			name = Release;
+		};
+		C22040222EB3D356005D9297 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PWL627GZ4Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = slf.FleanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Flean;
+			};
+			name = Debug;
+		};
+		C22040232EB3D356005D9297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PWL627GZ4Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = slf.FleanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Flean;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2203FC32EB3D352005D9297 /* Build configuration list for PBXProject "Flean" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C22040182EB3D356005D9297 /* Debug */,
+				C22040192EB3D356005D9297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		/* Build configuration list for macOS extension removed from iOS project */
+		C220401B2EB3D356005D9297 /* Build configuration list for PBXNativeTarget "Flean" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C220401C2EB3D356005D9297 /* Debug */,
+				C220401D2EB3D356005D9297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C220401E2EB3D356005D9297 /* Build configuration list for PBXNativeTarget "FleanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C220401F2EB3D356005D9297 /* Debug */,
+				C22040202EB3D356005D9297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C22040212EB3D356005D9297 /* Build configuration list for PBXNativeTarget "FleanUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C22040222EB3D356005D9297 /* Debug */,
+				C22040232EB3D356005D9297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C2203FC02EB3D352005D9297 /* Project object */;
+}
