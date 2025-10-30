@@ -16,7 +16,7 @@
         // Defaults
         const DEFAULTS = {
             allowedSites: [],
-            selectedMirror: 'antifandom.com',
+            selectedMirror: 'breezewiki.com',
             askOnVisit: false,
             mirrors: [
                 'breezewiki.com',
@@ -44,18 +44,29 @@
             ]
         };
 
+        // Helper to normalize mirror strings to a host (e.g. strip https:// and paths)
+        function normalizeHost(str) {
+            if (!str) return str;
+            try {
+                // If it's a full URL, URL() will succeed and we can read host
+                return new URL(str).host.toLowerCase();
+            } catch (e) {
+                try { return new URL('https://' + str).host.toLowerCase(); } catch (e2) { return str.toLowerCase(); }
+            }
+        }
+
         // Fast synchronous cache read (localStorage) to avoid blocking the page.
-        let allowedSites = DEFAULTS.allowedSites.slice();
-        let selectedMirror = DEFAULTS.selectedMirror;
-        let askOnVisit = DEFAULTS.askOnVisit;
-        let mirrors = DEFAULTS.mirrors.slice();
+    let allowedSites = DEFAULTS.allowedSites.slice();
+    let selectedMirror = DEFAULTS.selectedMirror;
+    let askOnVisit = DEFAULTS.askOnVisit;
+    let mirrors = DEFAULTS.mirrors.slice();
         try {
             const cache = JSON.parse(window.localStorage.getItem('__flean_cache') || 'null');
             if (cache && cache.ts && (Date.now() - cache.ts) < 30 * 1000) {
                 allowedSites = cache.allowedSites || allowedSites;
-                selectedMirror = (cache.selectedMirror || selectedMirror).toLowerCase();
+                selectedMirror = normalizeHost(cache.selectedMirror || selectedMirror);
                 askOnVisit = !!cache.askOnVisit;
-                mirrors = cache.mirrors || mirrors;
+                mirrors = (cache.mirrors || mirrors).map(normalizeHost);
             }
         } catch (e) { /* ignore cache parse errors */ }
 
@@ -63,10 +74,30 @@
         (async () => {
             try {
                 const s = await browser.storage.local.get({ allowedSites: [], selectedMirror: DEFAULTS.selectedMirror, askOnVisit: DEFAULTS.askOnVisit, mirrors: DEFAULTS.mirrors });
-                const cache = { allowedSites: s.allowedSites || [], selectedMirror: (s.selectedMirror || DEFAULTS.selectedMirror).toLowerCase(), askOnVisit: !!s.askOnVisit, mirrors: s.mirrors || DEFAULTS.mirrors, ts: Date.now() };
+                const cache = { allowedSites: s.allowedSites || [], selectedMirror: normalizeHost(s.selectedMirror || DEFAULTS.selectedMirror), askOnVisit: !!s.askOnVisit, mirrors: (s.mirrors || DEFAULTS.mirrors).map(normalizeHost), ts: Date.now() };
                 try { window.localStorage.setItem('__flean_cache', JSON.stringify(cache)); } catch (e) { /* ignore */ }
             } catch (e) { /* ignore background refresh errors */ }
         })();
+
+        // Keep the localStorage cache in sync immediately when preferences change.
+        if (browser && browser.storage && typeof browser.storage.onChanged === 'object') {
+            try {
+                browser.storage.onChanged.addListener((changes, areaName) => {
+                    if (areaName !== 'local') return;
+                    let updated = false;
+                    let cache = null;
+                    try { cache = JSON.parse(window.localStorage.getItem('__flean_cache') || 'null') || { ts: 0 }; } catch (e) { cache = { ts: 0 }; }
+                    if (changes.allowedSites) { cache.allowedSites = changes.allowedSites.newValue || []; updated = true; }
+                    if (changes.selectedMirror) { cache.selectedMirror = normalizeHost(changes.selectedMirror.newValue || DEFAULTS.selectedMirror); updated = true; }
+                    if (changes.askOnVisit) { cache.askOnVisit = !!changes.askOnVisit.newValue; updated = true; }
+                    if (changes.mirrors) { cache.mirrors = (changes.mirrors.newValue || DEFAULTS.mirrors).map(normalizeHost); updated = true; }
+                    if (updated) {
+                        cache.ts = Date.now();
+                        try { window.localStorage.setItem('__flean_cache', JSON.stringify(cache)); } catch (e) { /* ignore */ }
+                    }
+                });
+            } catch (e) { /* ignore if onChanged isn't available */ }
+        }
 
         // Fast session-scoped allow (for immediate navigation within this tab)
         let isSessionAllowed = false;

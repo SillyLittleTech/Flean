@@ -1,5 +1,11 @@
+
+function normalizeHost(str){
+	if (!str) return str;
+	try { return new URL(str).host.toLowerCase(); } catch (e) { try { return new URL('https://' + str).host.toLowerCase(); } catch (e2) { return str.toLowerCase().replace(/^https?:\/\//,'').replace(/\/$/,''); } }
+}
+
 const DEFAULTS = {
-	selectedMirror: 'antifandom.com',
+	selectedMirror: 'breezewiki.com',
 	mirrors: [
 		'breezewiki.com',
 		'antifandom.com',
@@ -73,9 +79,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 	renderAllowedList(store.allowedSites || []);
 
 	// Persist selected mirror as soon as user changes it so the popup can close
-	// without losing the selection.
+	// without losing the selection. Normalize the value to a host so content
+	// scripts see a consistent value.
 	el('mirror').addEventListener('change', async (e) => {
-		const selected = e.target.value;
+		let selected = e.target.value || '';
+		selected = normalizeHost(selected);
 		await browser.storage.local.set({ selectedMirror: selected });
 		console.log('Flean: saved selectedMirror', selected);
 	});
