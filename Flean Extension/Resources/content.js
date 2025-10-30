@@ -120,40 +120,27 @@
                 // Build URL (ensure no double-slashes)
                 mirrorUrl = `${url.protocol}//${destBase.replace(/\/$/, '')}${destPath}${destPage}${url.search}${url.hash}`;
             } else {
-                // Normalize the title for generic Breezewiki-like mirrors: use
-                // lowercase dashes (this is the fallback behavior).
-                const pageSlug = page.replace(/[_\s]+/g, '-').replace(/^[-]+|[-]+$/g, '').toLowerCase();
-                mirrorUrl = `${url.protocol}//${selectedMirror}/${wikiName}/wiki/${pageSlug}${url.search}${url.hash}`;
+                // Fallback behavior for generic mirrors: preserve the page title
+                // capitalization/underscores where possible. Many mirrors accept
+                // <Mirror>/<WikiName>/wiki/<Title> with Title preserving case.
+                const pageForMirror = page.replace(/\s+/g, '_').replace(/^\/+|\/+$/g, '');
+                // Capitalize wikiName for niceness (e.g. 'deltarune' -> 'Deltarune')
+                const wikiNameCap = wikiName.charAt(0).toUpperCase() + wikiName.slice(1);
+                mirrorUrl = `${url.protocol}//${selectedMirror}/${wikiNameCap}/wiki/${pageForMirror}${url.search}${url.hash}`;
             }
 
             // If we're already on a mirror host, do nothing.
             if (host === selectedMirror || (store.mirrors || []).includes(host)) return;
 
-            // If we matched a datapack entry, prefer applying that mapping.
-            // Auto-apply datapack mappings unless the user asked to be prompted.
-            if (datapackMatch) {
-                if (askOnVisit) {
-                    console.log('Flean: datapack mapping found for', host, '- asking before redirect');
-                    // fall through to show overlay so user can confirm
-                } else {
-                    console.log('Flean: auto-redirecting via datapack', url.href, '->', mirrorUrl);
-                    window.location.replace(mirrorUrl);
-                    return;
-                }
+            // If askOnVisit is disabled, auto-redirect all fandom wiki pages to
+            // the computed mirrorUrl (preferring datapack mappings when present).
+            if (!askOnVisit) {
+                console.log('Flean: askOnVisit=false, redirecting', url.href, '->', mirrorUrl);
+                window.location.replace(mirrorUrl);
+                return;
             }
-
-            // If current host or full URL is in the configured list, either auto-redirect
-            // or show the interstitial depending on the askOnVisit setting.
-            if (allowedSites.includes(host) || allowedSites.includes(url.href)) {
-                if (askOnVisit) {
-                    // show overlay and let user decide
-                    console.log('Flean: configured to ask before redirect for', host);
-                } else {
-                    console.log('Flean: auto-redirecting', url.href, '->', mirrorUrl);
-                    window.location.replace(mirrorUrl);
-                    return;
-                }
-            }
+            // If we reach here, askOnVisit is true — fall through to show overlay
+            // so the user can choose whether to redirect or visit once.
 
             // If the user has disabled asking on visit, do not inject the overlay.
             // Previously we always showed the interstitial for unknown hosts which
