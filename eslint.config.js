@@ -1,6 +1,6 @@
 // eslint.config.js — ESLint v9+ flat config
 // Mirrors .eslintrc.json for local development; DeepSource still reads .eslintrc.json.
-import globals from 'globals';
+import globals from 'globals'
 
 export default [
   {
@@ -18,4 +18,4 @@ export default [
       'no-console': 'off'
     }
   }
-];
+]
