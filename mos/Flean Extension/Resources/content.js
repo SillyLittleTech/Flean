@@ -136,6 +136,25 @@
         // If already on a mirror host, do nothing
         if (host === selectedMirror || (mirrors || []).includes(host)) return;
 
+        // Query background.js for a structured indie wiki match.
+        // Falls back to the BreezeWiki mirror URL if unavailable or no match found.
+        let finalDestUrl = mirrorUrl;
+        let finalDestLabel = selectedMirror;
+        let isIndieWiki = false;
+        try {
+            let cancelTimeout;
+            const structured = await Promise.race([
+                browser.runtime.sendMessage({ action: 'findWiki', url: url.href }),
+                new Promise(resolve => { cancelTimeout = setTimeout(() => resolve(null), 500); })
+            ]);
+            clearTimeout(cancelTimeout);
+            if (structured && structured.destinationUrl) {
+                finalDestUrl = structured.destinationUrl;
+                finalDestLabel = structured.wikiName || new URL(structured.destinationUrl).host;
+                isIndieWiki = true;
+            }
+        } catch (e) { /* background unavailable – fall back to heuristic mirror */ }
+
         // Fast-path for askOnVisit=false using sessionStorage-only attempt tracking
         if (!askOnVisit) {
             const ATTEMPT_WINDOW_MS = 10 * 1000; // 10s window
@@ -171,8 +190,8 @@
             }
 
             // Redirect quickly
-            console.log('Flean: askOnVisit=false, redirecting', url.href, '->', mirrorUrl);
-            try { window.location.replace(mirrorUrl); } catch (e) { console.warn('Flean: failed to redirect', e); }
+            console.log('Flean: askOnVisit=false, redirecting', url.href, '->', finalDestUrl);
+            try { window.location.replace(finalDestUrl); } catch (e) { console.warn('Flean: failed to redirect', e); }
             return;
         }
 
@@ -243,12 +262,18 @@
 
         const overlay = document.createElement('div');
         overlay.id = 'flean-overlay';
+        const overlayHeading = isIndieWiki
+            ? `Open this wiki on its independent mirror?`
+            : `Open this Fandom wiki on a Breezewiki mirror?`;
+        const overlayBody = isIndieWiki
+            ? `This page has an independent wiki. You can open the same article on <strong>${finalDestLabel}</strong> (recommended), or continue to visit the Fandom page.`
+            : `This page appears to be a Fandom wiki article. You can open the same article on <strong>${finalDestLabel}</strong> (recommended), or continue to visit the Fandom page.`;
         overlay.innerHTML = `
             <div id="flean-card">
-                <h1>Open this Fandom wiki on a Breezewiki mirror?</h1>
-                <p>This page appears to be a Fandom wiki article. You can open the same article on <strong>${selectedMirror}</strong> (recommended), or continue to visit the Fandom page.</p>
+                <h1>${overlayHeading}</h1>
+                <p>${overlayBody}</p>
                 <div id="flean-actions">
-                    <button class="flean-btn" id="flean-open-mirror">Open on ${selectedMirror}</button>
+                    <button class="flean-btn" id="flean-open-mirror">Open on ${finalDestLabel}</button>
                     <button class="flean-btn secondary" id="flean-visit-once">Visit Fandom (once)</button>
                     <button class="flean-btn secondary" id="flean-allow-site">Allow on this page</button>
                     <a class="flean-link" id="flean-open-popup">Extension settings</a>
@@ -273,7 +298,7 @@
         if (openBtn) openBtn.addEventListener('click', (e) => {
             e.preventDefault(); e.stopPropagation();
             console.debug('Flean: open mirror button clicked');
-            try { window.location.replace(mirrorUrl); } catch (err) { console.warn('Flean: failed to open mirror', err); }
+            try { window.location.replace(finalDestUrl); } catch (err) { console.warn('Flean: failed to open mirror', err); }
         });
 
         if (onceBtn) onceBtn.addEventListener('click', (e) => {

@@ -19,7 +19,9 @@
         "type": "module"
     },
 
-    "permissions": [ "storage" ],
+    "permissions": [ "storage", "alarms" ],
+
+    "host_permissions": [ "https://raw.githubusercontent.com/*" ],
 
     "content_scripts": [{
         "js": [ "content.js" ],
