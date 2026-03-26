@@ -142,7 +142,7 @@
         let finalDestLabel = selectedMirror;
         let isIndieWiki = false;
         try {
-            let cancelTimeout;
+            let cancelTimeout = null;
             const structured = await Promise.race([
                 browser.runtime.sendMessage({ action: 'findWiki', url: url.href }),
                 new Promise(resolve => { cancelTimeout = setTimeout(() => resolve(null), 500); })
@@ -158,18 +158,33 @@
         // Fast-path for askOnVisit=false using sessionStorage-only attempt tracking
         if (!askOnVisit) {
             const ATTEMPT_WINDOW_MS = 10 * 1000; // 10s window
-            const refHost = (document.referrer ? (() => { try { return new URL(document.referrer).host.toLowerCase(); } catch (e) { return null; } })() : null);
-            const fromMirror = refHost && (mirrors.includes(refHost) || refHost === selectedMirror);
-            const ATTEMPT_THRESHOLD = fromMirror ? 2 : 3;
+            const ATTEMPT_THRESHOLD = 2; // either 2 navigations within the window OR 2 consecutive reloads independently trigger suppression
             const SUPPRESS_COOLDOWN_MS = 30 * 1000;
 
             const now = Date.now();
             const pageKey = url.href;
             const attemptsKey = '__flean_attempts:' + pageKey;
             const suppressKey = '__flean_suppressed:' + pageKey;
+            const reloadKey = '__flean_reloads:' + pageKey;
 
             function readSessionArray(k) { try { return JSON.parse(window.sessionStorage.getItem(k) || '[]'); } catch (e) { return []; } }
             function writeSessionArray(k, arr) { try { window.sessionStorage.setItem(k, JSON.stringify(arr)); } catch (e) { /* ignore */ } }
+
+            // Detect whether this page load is a browser reload (F5 / Cmd-R)
+            let isReload = false;
+            try {
+                const navEntry = performance.getEntriesByType('navigation')[0];
+                isReload = navEntry ? navEntry.type === 'reload' : (performance.navigation && performance.navigation.type === 1);
+            } catch (e) { /* ignore */ }
+
+            // Track consecutive reloads separately; two in a row bypasses the redirect.
+            // Intentionally resets to 0 on any non-reload navigation so only truly
+            // back-to-back reloads of the same page count toward suppression.
+            let reloadCount = 0;
+            try {
+                reloadCount = isReload ? (parseInt(window.sessionStorage.getItem(reloadKey) || '0', 10) + 1) : 0;
+                window.sessionStorage.setItem(reloadKey, String(reloadCount));
+            } catch (e) { /* ignore */ }
 
             const recent = readSessionArray(attemptsKey).filter(ts => (now - ts) <= ATTEMPT_WINDOW_MS);
             recent.push(now);
@@ -182,9 +197,9 @@
                 return;
             }
 
-            if (recent.length >= ATTEMPT_THRESHOLD) {
+            if (reloadCount >= ATTEMPT_THRESHOLD || recent.length >= ATTEMPT_THRESHOLD) {
                 window.sessionStorage.setItem(suppressKey, String(now + SUPPRESS_COOLDOWN_MS));
-                console.info('Flean: suppressing redirect for', pageKey, 'for', SUPPRESS_COOLDOWN_MS, 'ms (fromMirror=' + !!fromMirror + ')');
+                console.info('Flean: suppressing redirect for', pageKey, 'for', SUPPRESS_COOLDOWN_MS, 'ms (reloads=' + reloadCount + ', navigations=' + recent.length + ')');
                 showSuppressionBanner();
                 return;
             }
@@ -232,13 +247,19 @@
                 if (container) container.insertBefore(banner, container.firstChild);
 
                 const cfg = document.getElementById('flean-suppress-config');
-                if (cfg) cfg.addEventListener('click', (e) => {
+                if (cfg) cfg.addEventListener('click', async (e) => {
                     e.preventDefault(); e.stopPropagation();
                     try {
-                        if (browser && browser.runtime && typeof browser.runtime.openOptionsPage === 'function') {
-                            browser.runtime.openOptionsPage();
+                        if (browser.action && typeof browser.action.openPopup === 'function') {
+                            await browser.action.openPopup(); return;
                         }
-                    } catch (err) { console.warn('Flean: could not open options from banner', err); }
+                    } catch (e) { /* try next */ }
+                    try {
+                        if (browser.runtime && typeof browser.runtime.openOptionsPage === 'function') {
+                            browser.runtime.openOptionsPage(); return;
+                        }
+                    } catch (e) { /* try next */ }
+                    try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }); } catch (e) { console.warn('Flean: could not open settings', e); }
                 });
                 closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); banner.remove(); });
                 console.debug('Flean: suppression banner shown');
@@ -322,10 +343,19 @@
         });
 
         if (settingsLink) {
-            const canOpenOptions = !!(browser && browser.runtime && typeof browser.runtime.openOptionsPage === 'function');
-            if (!canOpenOptions) settingsLink.remove(); else settingsLink.addEventListener('click', (e) => {
+            settingsLink.addEventListener('click', async (e) => {
                 e.preventDefault(); e.stopPropagation();
-                try { browser.runtime.openOptionsPage(); } catch (err) { console.warn('Flean: could not open options page', err); settingsLink.remove(); }
+                try {
+                    if (browser.action && typeof browser.action.openPopup === 'function') {
+                        await browser.action.openPopup(); return;
+                    }
+                } catch (e) { /* try next */ }
+                try {
+                    if (browser.runtime && typeof browser.runtime.openOptionsPage === 'function') {
+                        browser.runtime.openOptionsPage(); return;
+                    }
+                } catch (e) { /* try next */ }
+                try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }); } catch (e) { console.warn('Flean: could not open settings', e); }
             });
         }
 
