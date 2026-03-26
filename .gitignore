@@ -59,4 +59,7 @@ Carthage/Build/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
-fastlane/test_output
+# Node / ESLint dev deps (only needed for local linting)
+node_modules/
+package-lock.json
+

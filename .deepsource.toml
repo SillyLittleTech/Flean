@@ -1,0 +1,14 @@
+version = 1
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  environment = ["browser", "es2020"]
+
+  # JS-0002: console usage is intentional in browser extension background/content
+  #          scripts where logging is the only debug channel available.
+  # JS-0125: `browser` is the WebExtension runtime global injected by the host
+  #          browser (Safari/Firefox/Chrome) — it is not a project-level variable.
+  # Both are false positives for this codebase and are suppressed via .eslintrc.json
+  # (env.webextensions = true covers `browser`; no-console = off covers console calls).
