@@ -1,12 +1,11 @@
 import { getWikiData, fetchWikiData, findMatchingWiki, invalidateIndex } from './scripts/wiki-data-manager.js'
 
+
 // Initialise wiki data on extension startup (loads from cache or fetches fresh)
 async function initWikiData () {
   try {
     await getWikiData()
-    console.log('Flean: wiki data ready')
-  } catch (e) {
-    console.warn('Flean: wiki data init failed, heuristics will be used', e)
+  } catch {
   }
 }
 
@@ -20,17 +19,14 @@ function setupRefreshAlarm () {
       try {
         await fetchWikiData()
         invalidateIndex()
-        console.log('Flean: wiki data refreshed')
-      } catch (e) {
-        console.warn('Flean: scheduled wiki data refresh failed', e)
+      } catch {
       }
     })
-  } catch (e) {
-    console.warn('Flean: could not set up refresh alarm', e)
+  } catch {
   }
 }
 
-browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((request) => {
   if (request.greeting === 'hello') {
     return Promise.resolve({ farewell: 'goodbye' })
   }
@@ -38,6 +34,8 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'findWiki') {
     return findMatchingWiki(request.url).catch(() => null)
   }
+
+  return undefined
 })
 
 initWikiData()
