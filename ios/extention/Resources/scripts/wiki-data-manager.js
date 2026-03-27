@@ -9,9 +9,6 @@ const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000 // 7 days
 
 const BASE64REGEX = /^[A-Za-z0-9+/]+=*$/
 
-const log = {
-  warn: () => {}
-}
 
 /**
  * Compress a JS value to a gzip+base64 string.
@@ -84,13 +81,11 @@ export async function getWikiData () {
     if (compressed && (Date.now() - ts) < CACHE_TTL_MS) {
       try {
         return await decompressJSON(compressed)
-      } catch (e) {
-        log.warn('Flean: wiki data decompression failed, re-fetching', e)
+      } catch {
       }
     }
     return await fetchWikiData()
-  } catch (e) {
-    log.warn('Flean: could not load wiki data, falling back to heuristics', e)
+  } catch {
     return null
   }
 }

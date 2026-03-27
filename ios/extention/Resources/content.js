@@ -1,13 +1,7 @@
 // Content script: intercept fandom/wikia wiki pages and redirect to a selected Breezewiki mirror.
 
-const log = {
-  debug: () => {},
-  info: () => {},
-  warn: () => {},
-  error: () => {}
-}
 
-(async function () {
+async function runContentScript () {
   try {
     const url = new URL(window.location.href)
     const host = url.host.toLowerCase()
@@ -78,13 +72,14 @@ const log = {
     } catch { /* ignore cache parse errors */ }
 
     // Background refresh of storage to keep the cache fresh (non-blocking)
-    (async () => {
+    async function refreshCacheInBackground () {
       try {
         const storageSettings = await browser.storage.local.get({ allowedSites: [], selectedMirror: DEFAULTS.selectedMirror, askOnVisit: DEFAULTS.askOnVisit, mirrors: DEFAULTS.mirrors })
         const cache = { allowedSites: storageSettings.allowedSites || [], selectedMirror: normalizeHost(storageSettings.selectedMirror || DEFAULTS.selectedMirror), askOnVisit: Boolean(storageSettings.askOnVisit), mirrors: (storageSettings.mirrors || DEFAULTS.mirrors).map(normalizeHost), ts: Date.now() }
         try { window.localStorage.setItem('__flean_cache', JSON.stringify(cache)) } catch { /* ignore */ }
       } catch { /* ignore background refresh errors */ }
-    })()
+    }
+    refreshCacheInBackground()
 
     // Keep the localStorage cache in sync immediately when preferences change.
     if (browser?.storage && typeof browser.storage.onChanged === 'object') {
@@ -118,7 +113,6 @@ const log = {
     } catch { /* ignore */ }
 
     if ((allowedSites || []).includes(host) || isSessionAllowed) {
-      log.info('Flean: host is in ignore list or session-allowed, skipping redirection for', host)
       return
     }
 
@@ -199,21 +193,18 @@ const log = {
 
       const suppressedUntil = parseInt(window.sessionStorage.getItem(suppressKey) || '0', 10) || 0
       if (now < suppressedUntil) {
-        log.debug('Flean: redirect suppressed until', new Date(suppressedUntil).toISOString())
         showSuppressionBanner()
         return
       }
 
       if (reloadCount >= ATTEMPT_THRESHOLD || recent.length >= ATTEMPT_THRESHOLD) {
         window.sessionStorage.setItem(suppressKey, String(now + SUPPRESS_COOLDOWN_MS))
-        log.info('Flean: suppressing redirect for', pageKey, 'for', SUPPRESS_COOLDOWN_MS, `ms (reloads=${reloadCount}, navigations=${recent.length})`)
         showSuppressionBanner()
         return
       }
 
       // Redirect quickly
-      log.info('Flean: askOnVisit=false, redirecting', url.href, '->', finalDestUrl)
-      try { window.location.replace(finalDestUrl) } catch (e) { log.warn('Flean: failed to redirect', e) }
+      try { window.location.replace(finalDestUrl) } catch { /* ignore */ }
       return
     }
 
@@ -267,13 +258,11 @@ const log = {
                 browser.runtime.openOptionsPage(); return
               }
             } catch { /* try next */ }
-            try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }) } catch (e) { log.warn('Flean: could not open settings', e) }
+            try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }) } catch { /* ignore */ }
           })
         }
         closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); banner.remove() })
-        log.debug('Flean: suppression banner shown')
-      } catch (e) {
-        log.warn('Flean: failed to create suppression banner', e)
+      } catch {
       }
     }
 
@@ -319,24 +308,19 @@ const log = {
     const allowBtn = overlay.querySelector('#flean-allow-site')
     const settingsLink = overlay.querySelector('#flean-open-popup')
 
-    log.debug('Flean: overlay buttons', { openBtn: Boolean(openBtn), onceBtn: Boolean(onceBtn), allowBtn: Boolean(allowBtn), settingsLink: Boolean(settingsLink) })
-
     overlay.addEventListener('click', (ev) => {
-      try { log.debug('Flean: overlay click', ev.target && (ev.target.id || ev.target.className || ev.target.tagName)) } catch { /* ignore */ }
     }, { capture: true })
 
     if (openBtn) {
       openBtn.addEventListener('click', (e) => {
         e.preventDefault(); e.stopPropagation()
-        log.debug('Flean: open mirror button clicked')
-        try { window.location.replace(finalDestUrl) } catch (err) { log.warn('Flean: failed to open mirror', err) }
+        try { window.location.replace(finalDestUrl) } catch { /* ignore */ }
       })
     }
 
     if (onceBtn) {
       onceBtn.addEventListener('click', (e) => {
         e.preventDefault(); e.stopPropagation()
-        log.debug('Flean: visit once clicked')
         overlay.remove()
         style.remove()
       })
@@ -345,13 +329,11 @@ const log = {
     if (allowBtn) {
       allowBtn.addEventListener('click', (e) => {
         e.preventDefault(); e.stopPropagation()
-        log.debug('Flean: allow site clicked for', host)
         try {
           const SESSION_ALLOW_MS = 5 * 1000 // 5 seconds
           const until = Date.now() + SESSION_ALLOW_MS
           try { window.sessionStorage.setItem('__flean_allow_until', String(until)) } catch { /* ignore */ }
-          log.info('Flean: session-allow for host', host, 'until', new Date(until).toISOString())
-        } catch (err) { log.warn('Flean: failed to set session allow', err) }
+        } catch { /* ignore */ }
         overlay.remove()
         style.remove()
       })
@@ -370,10 +352,11 @@ const log = {
             browser.runtime.openOptionsPage(); return
           }
         } catch { /* try next */ }
-        try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }) } catch (e) { log.warn('Flean: could not open settings', e) }
+        try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }) } catch { /* ignore */ }
       })
     }
-  } catch (err) {
-    log.error('Flean content script error:', err)
+  } catch {
   }
-})()
+}
+
+runContentScript()
