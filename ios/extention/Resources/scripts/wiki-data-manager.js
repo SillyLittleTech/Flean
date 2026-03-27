@@ -111,7 +111,7 @@ let _wikiIndex = null
 let _wikiIndexPromise = null
 
 /** Ensure the in-memory lookup index is built. */
-async function ensureIndex () {
+function ensureIndex () {
   if (_wikiIndex !== null) return _wikiIndex
   if (_wikiIndexPromise) return _wikiIndexPromise
   _wikiIndexPromise = getWikiData().then(data => {
