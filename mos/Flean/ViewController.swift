@@ -47,7 +47,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
             return;
         }
 
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
+        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { _ in
             DispatchQueue.main.async {
                 NSApplication.shared.terminate(nil)
             }
