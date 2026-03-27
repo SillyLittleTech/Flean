@@ -1,12 +1,11 @@
 import { getWikiData, fetchWikiData, findMatchingWiki, invalidateIndex } from './scripts/wiki-data-manager.js'
 
-
 // Initialise wiki data on extension startup (loads from cache or fetches fresh)
 async function initWikiData () {
   try {
     await getWikiData()
   } catch {
-    return
+
   }
 }
 
@@ -21,11 +20,11 @@ function setupRefreshAlarm () {
         await fetchWikiData()
         invalidateIndex()
       } catch {
-        return
+
       }
     })
   } catch {
-    return
+
   }
 }
 
