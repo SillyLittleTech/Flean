@@ -1,6 +1,5 @@
 // Content script: intercept fandom/wikia wiki pages and redirect to a selected Breezewiki mirror.
 
-
 // skipcq: JS-R1005
 async function runContentScript () {
   try {
@@ -265,7 +264,6 @@ async function runContentScript () {
         closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); banner.remove() })
       } catch (err) {
         void err
-        return
       }
     }
 
@@ -357,7 +355,6 @@ async function runContentScript () {
     }
   } catch (err) {
     void err
-    return
   }
 }
 
