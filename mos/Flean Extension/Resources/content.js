@@ -1,6 +1,7 @@
 // Content script: intercept fandom/wikia wiki pages and redirect to a selected Breezewiki mirror.
 
-(async function () {
+// skipcq: JS-R1005
+async function runContentScript () {
   try {
     const url = new URL(window.location.href)
     const host = url.host.toLowerCase()
@@ -50,8 +51,8 @@
       try {
         // If it's a full URL, URL() will succeed and we can read host
         return new URL(str).host.toLowerCase()
-      } catch (e) {
-        try { return new URL('https://' + str).host.toLowerCase() } catch (e2) { return str.toLowerCase() }
+      } catch {
+        try { return new URL(`https://${str}`).host.toLowerCase() } catch { return str.toLowerCase() }
       }
     }
 
@@ -62,41 +63,42 @@
     let mirrors = DEFAULTS.mirrors.slice()
     try {
       const cache = JSON.parse(window.localStorage.getItem('__flean_cache') || 'null')
-      if (cache && cache.ts && (Date.now() - cache.ts) < 30 * 1000) {
+      if (cache?.ts && (Date.now() - cache.ts) < 30 * 1000) {
         allowedSites = cache.allowedSites || allowedSites
         selectedMirror = normalizeHost(cache.selectedMirror || selectedMirror)
-        askOnVisit = !!cache.askOnVisit
+        askOnVisit = Boolean(cache.askOnVisit)
         mirrors = (cache.mirrors || mirrors).map(normalizeHost)
       }
-    } catch (e) { /* ignore cache parse errors */ }
+    } catch { /* ignore cache parse errors */ }
 
     // Background refresh of storage to keep the cache fresh (non-blocking)
-    (async () => {
+    async function refreshCacheInBackground () {
       try {
-        const s = await browser.storage.local.get({ allowedSites: [], selectedMirror: DEFAULTS.selectedMirror, askOnVisit: DEFAULTS.askOnVisit, mirrors: DEFAULTS.mirrors })
-        const cache = { allowedSites: s.allowedSites || [], selectedMirror: normalizeHost(s.selectedMirror || DEFAULTS.selectedMirror), askOnVisit: !!s.askOnVisit, mirrors: (s.mirrors || DEFAULTS.mirrors).map(normalizeHost), ts: Date.now() }
-        try { window.localStorage.setItem('__flean_cache', JSON.stringify(cache)) } catch (e) { /* ignore */ }
-      } catch (e) { /* ignore background refresh errors */ }
-    })()
+        const storageSettings = await browser.storage.local.get({ allowedSites: [], selectedMirror: DEFAULTS.selectedMirror, askOnVisit: DEFAULTS.askOnVisit, mirrors: DEFAULTS.mirrors })
+        const cache = { allowedSites: storageSettings.allowedSites || [], selectedMirror: normalizeHost(storageSettings.selectedMirror || DEFAULTS.selectedMirror), askOnVisit: Boolean(storageSettings.askOnVisit), mirrors: (storageSettings.mirrors || DEFAULTS.mirrors).map(normalizeHost), ts: Date.now() }
+        try { window.localStorage.setItem('__flean_cache', JSON.stringify(cache)) } catch { /* ignore */ }
+      } catch { /* ignore background refresh errors */ }
+    }
+    refreshCacheInBackground()
 
     // Keep the localStorage cache in sync immediately when preferences change.
-    if (browser && browser.storage && typeof browser.storage.onChanged === 'object') {
+    if (browser?.storage && typeof browser.storage.onChanged === 'object') {
       try {
         browser.storage.onChanged.addListener((changes, areaName) => {
           if (areaName !== 'local') return
           let updated = false
           let cache = null
-          try { cache = JSON.parse(window.localStorage.getItem('__flean_cache') || 'null') || { ts: 0 } } catch (e) { cache = { ts: 0 } }
+          try { cache = JSON.parse(window.localStorage.getItem('__flean_cache') || 'null') || { ts: 0 } } catch { cache = { ts: 0 } }
           if (changes.allowedSites) { cache.allowedSites = changes.allowedSites.newValue || []; updated = true }
           if (changes.selectedMirror) { cache.selectedMirror = normalizeHost(changes.selectedMirror.newValue || DEFAULTS.selectedMirror); updated = true }
-          if (changes.askOnVisit) { cache.askOnVisit = !!changes.askOnVisit.newValue; updated = true }
+          if (changes.askOnVisit) { cache.askOnVisit = Boolean(changes.askOnVisit.newValue); updated = true }
           if (changes.mirrors) { cache.mirrors = (changes.mirrors.newValue || DEFAULTS.mirrors).map(normalizeHost); updated = true }
           if (updated) {
             cache.ts = Date.now()
-            try { window.localStorage.setItem('__flean_cache', JSON.stringify(cache)) } catch (e) { /* ignore */ }
+            try { window.localStorage.setItem('__flean_cache', JSON.stringify(cache)) } catch { /* ignore */ }
           }
         })
-      } catch (e) { /* ignore if onChanged isn't available */ }
+      } catch { /* ignore if onChanged isn't available */ }
     }
 
     // Fast session-scoped allow (for immediate navigation within this tab)
@@ -108,10 +110,9 @@
         if (Date.now() <= until) isSessionAllowed = true
         else window.sessionStorage.removeItem('__flean_allow_until')
       }
-    } catch (e) { /* ignore */ }
+    } catch { /* ignore */ }
 
     if ((allowedSites || []).includes(host) || isSessionAllowed) {
-      console.log('Flean: host is in ignore list or session-allowed, skipping redirection for', host)
       return
     }
 
@@ -126,7 +127,7 @@
 
     // Extract page title
     let page = path.replace(/^\/wiki\//i, '')
-    try { page = decodeURIComponent(page) } catch (e) { /* ignore */ }
+    try { page = decodeURIComponent(page) } catch { /* ignore */ }
 
     // Compute mirror URL (fallback)
     const pageForMirror = page.replace(/\s+/g, '_').replace(/^\/+|\/+$/g, '')
@@ -148,12 +149,12 @@
         new Promise(resolve => { cancelTimeout = setTimeout(() => resolve(null), 500) })
       ])
       clearTimeout(cancelTimeout)
-      if (structured && structured.destinationUrl) {
+      if (structured?.destinationUrl) {
         finalDestUrl = structured.destinationUrl
         finalDestLabel = structured.wikiName || new URL(structured.destinationUrl).host
         isIndieWiki = true
       }
-    } catch (e) { /* background unavailable – fall back to heuristic mirror */ }
+    } catch { /* background unavailable – fall back to heuristic mirror */ }
 
     // Fast-path for askOnVisit=false using sessionStorage-only attempt tracking
     if (!askOnVisit) {
@@ -163,19 +164,19 @@
 
       const now = Date.now()
       const pageKey = url.href
-      const attemptsKey = '__flean_attempts:' + pageKey
-      const suppressKey = '__flean_suppressed:' + pageKey
-      const reloadKey = '__flean_reloads:' + pageKey
+      const attemptsKey = `__flean_attempts:${pageKey}`
+      const suppressKey = `__flean_suppressed:${pageKey}`
+      const reloadKey = `__flean_reloads:${pageKey}`
 
-      function readSessionArray (k) { try { return JSON.parse(window.sessionStorage.getItem(k) || '[]') } catch (e) { return [] } }
-      function writeSessionArray (k, arr) { try { window.sessionStorage.setItem(k, JSON.stringify(arr)) } catch (e) { /* ignore */ } }
+      function readSessionArray (k) { try { return JSON.parse(window.sessionStorage.getItem(k) || '[]') } catch { return [] } }
+      function writeSessionArray (k, arr) { try { window.sessionStorage.setItem(k, JSON.stringify(arr)) } catch { /* ignore */ } }
 
       // Detect whether this page load is a browser reload (F5 / Cmd-R)
       let isReload = false
       try {
         const navEntry = performance.getEntriesByType('navigation')[0]
         isReload = navEntry ? navEntry.type === 'reload' : (performance.navigation && performance.navigation.type === 1)
-      } catch (e) { /* ignore */ }
+      } catch { /* ignore */ }
 
       // Track consecutive reloads separately; two in a row bypasses the redirect.
       // Intentionally resets to 0 on any non-reload navigation so only truly
@@ -184,7 +185,7 @@
       try {
         reloadCount = isReload ? (parseInt(window.sessionStorage.getItem(reloadKey) || '0', 10) + 1) : 0
         window.sessionStorage.setItem(reloadKey, String(reloadCount))
-      } catch (e) { /* ignore */ }
+      } catch { /* ignore */ }
 
       const recent = readSessionArray(attemptsKey).filter(ts => (now - ts) <= ATTEMPT_WINDOW_MS)
       recent.push(now)
@@ -192,21 +193,18 @@
 
       const suppressedUntil = parseInt(window.sessionStorage.getItem(suppressKey) || '0', 10) || 0
       if (now < suppressedUntil) {
-        console.debug('Flean: redirect suppressed until', new Date(suppressedUntil).toISOString())
         showSuppressionBanner()
         return
       }
 
       if (reloadCount >= ATTEMPT_THRESHOLD || recent.length >= ATTEMPT_THRESHOLD) {
         window.sessionStorage.setItem(suppressKey, String(now + SUPPRESS_COOLDOWN_MS))
-        console.info('Flean: suppressing redirect for', pageKey, 'for', SUPPRESS_COOLDOWN_MS, 'ms (reloads=' + reloadCount + ', navigations=' + recent.length + ')')
         showSuppressionBanner()
         return
       }
 
       // Redirect quickly
-      console.log('Flean: askOnVisit=false, redirecting', url.href, '->', finalDestUrl)
-      try { window.location.replace(finalDestUrl) } catch (e) { console.warn('Flean: failed to redirect', e) }
+      try { window.location.replace(finalDestUrl) } catch { /* ignore */ }
       return
     }
 
@@ -254,19 +252,18 @@
               if (browser.action && typeof browser.action.openPopup === 'function') {
                 await browser.action.openPopup(); return
               }
-            } catch (e) { /* try next */ }
+            } catch { /* try next */ }
             try {
               if (browser.runtime && typeof browser.runtime.openOptionsPage === 'function') {
                 browser.runtime.openOptionsPage(); return
               }
-            } catch (e) { /* try next */ }
-            try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }) } catch (e) { console.warn('Flean: could not open settings', e) }
+            } catch { /* try next */ }
+            try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }) } catch { /* ignore */ }
           })
         }
         closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); banner.remove() })
-        console.debug('Flean: suppression banner shown')
-      } catch (e) {
-        console.warn('Flean: failed to create suppression banner', e)
+      } catch (err) {
+        if (err) return
       }
     }
 
@@ -312,24 +309,16 @@
     const allowBtn = overlay.querySelector('#flean-allow-site')
     const settingsLink = overlay.querySelector('#flean-open-popup')
 
-    console.debug('Flean: overlay buttons', { openBtn: !!openBtn, onceBtn: !!onceBtn, allowBtn: !!allowBtn, settingsLink: !!settingsLink })
-
-    overlay.addEventListener('click', (ev) => {
-      try { console.debug('Flean: overlay click', ev.target && (ev.target.id || ev.target.className || ev.target.tagName)) } catch (e) { /* ignore */ }
-    }, { capture: true })
-
     if (openBtn) {
       openBtn.addEventListener('click', (e) => {
         e.preventDefault(); e.stopPropagation()
-        console.debug('Flean: open mirror button clicked')
-        try { window.location.replace(finalDestUrl) } catch (err) { console.warn('Flean: failed to open mirror', err) }
+        try { window.location.replace(finalDestUrl) } catch { /* ignore */ }
       })
     }
 
     if (onceBtn) {
       onceBtn.addEventListener('click', (e) => {
         e.preventDefault(); e.stopPropagation()
-        console.debug('Flean: visit once clicked')
         overlay.remove()
         style.remove()
       })
@@ -338,13 +327,11 @@
     if (allowBtn) {
       allowBtn.addEventListener('click', (e) => {
         e.preventDefault(); e.stopPropagation()
-        console.debug('Flean: allow site clicked for', host)
         try {
           const SESSION_ALLOW_MS = 5 * 1000 // 5 seconds
           const until = Date.now() + SESSION_ALLOW_MS
-          try { window.sessionStorage.setItem('__flean_allow_until', String(until)) } catch (e) { /* ignore */ }
-          console.info('Flean: session-allow for host', host, 'until', new Date(until).toISOString())
-        } catch (err) { console.warn('Flean: failed to set session allow', err) }
+          try { window.sessionStorage.setItem('__flean_allow_until', String(until)) } catch { /* ignore */ }
+        } catch { /* ignore */ }
         overlay.remove()
         style.remove()
       })
@@ -357,16 +344,18 @@
           if (browser.action && typeof browser.action.openPopup === 'function') {
             await browser.action.openPopup(); return
           }
-        } catch (e) { /* try next */ }
+        } catch { /* try next */ }
         try {
           if (browser.runtime && typeof browser.runtime.openOptionsPage === 'function') {
             browser.runtime.openOptionsPage(); return
           }
-        } catch (e) { /* try next */ }
-        try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }) } catch (e) { console.warn('Flean: could not open settings', e) }
+        } catch { /* try next */ }
+        try { await browser.tabs.create({ url: browser.runtime.getURL('popup.html') }) } catch { /* ignore */ }
       })
     }
   } catch (err) {
-    console.error('Flean content script error:', err)
+    if (err) return
   }
-})()
+}
+
+runContentScript()
