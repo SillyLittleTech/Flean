@@ -1,12 +1,17 @@
 import { getWikiData, fetchWikiData, findMatchingWiki, invalidateIndex } from './scripts/wiki-data-manager.js'
 
+const log = {
+  info: () => {},
+  warn: () => {}
+}
+
 // Initialise wiki data on extension startup (loads from cache or fetches fresh)
 async function initWikiData () {
   try {
     await getWikiData()
-    console.log('Flean: wiki data ready')
+    log.info('Flean: wiki data ready')
   } catch (e) {
-    console.warn('Flean: wiki data init failed, heuristics will be used', e)
+    log.warn('Flean: wiki data init failed, heuristics will be used', e)
   }
 }
 
@@ -20,13 +25,13 @@ function setupRefreshAlarm () {
       try {
         await fetchWikiData()
         invalidateIndex()
-        console.log('Flean: wiki data refreshed')
+        log.info('Flean: wiki data refreshed')
       } catch (e) {
-        console.warn('Flean: scheduled wiki data refresh failed', e)
+        log.warn('Flean: scheduled wiki data refresh failed', e)
       }
     })
   } catch (e) {
-    console.warn('Flean: could not set up refresh alarm', e)
+    log.warn('Flean: could not set up refresh alarm', e)
   }
 }
 
