@@ -1,6 +1,5 @@
 // Content script: intercept fandom/wikia wiki pages and redirect to a selected Breezewiki mirror.
 
-
 async function runContentScript () {
   try {
     const url = new URL(window.location.href)
