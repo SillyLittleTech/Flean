@@ -9,6 +9,7 @@ const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000 // 7 days
 
 const BASE64REGEX = /^[A-Za-z0-9+/]+=*$/
 
+
 /**
  * Compress a JS value to a gzip+base64 string.
  * Falls back to plain JSON string if CompressionStream is unavailable.
@@ -27,7 +28,7 @@ export async function compressJSON (value) {
     let binary = ''
     for (let i = 0; i < uint8.length; i++) binary += String.fromCharCode(uint8[i])
     return btoa(binary)
-  } catch (e) {
+  } catch {
     return btoa(json)
   }
 }
@@ -51,7 +52,7 @@ export async function decompressJSON (value) {
     return JSON.parse(new TextDecoder().decode(decompressed))
   } catch (e) {
     // May be plain base64 JSON (written by the fallback path above)
-    try { return JSON.parse(atob(value)) } catch (e2) { throw e }
+    try { return JSON.parse(atob(value)) } catch { throw e }
   }
 }
 
@@ -80,13 +81,12 @@ export async function getWikiData () {
     if (compressed && (Date.now() - ts) < CACHE_TTL_MS) {
       try {
         return await decompressJSON(compressed)
-      } catch (e) {
-        console.warn('Flean: wiki data decompression failed, re-fetching', e)
+      } catch {
+        // fall through and fetch fresh data
       }
     }
     return await fetchWikiData()
-  } catch (e) {
-    console.warn('Flean: could not load wiki data, falling back to heuristics', e)
+  } catch {
     return null
   }
 }
@@ -162,29 +162,29 @@ export async function findMatchingWiki (urlString) {
     if (article.toLowerCase().startsWith(originPathPrefix.toLowerCase())) {
       article = article.slice(originPathPrefix.length)
     }
-    try { article = decodeURIComponent(article) } catch (e) { /* keep encoded */ }
+    try { article = decodeURIComponent(article) } catch { /* keep encoded */ }
 
     // Build destination URL based on platform
     const destBase = wiki.destination_base_url
       .replace(/^https?:\/\//, '')
       .replace(/\/$/, '')
     const platform = (wiki.destination_platform || 'mediawiki').toLowerCase()
-    let destPath
+    let destPath = ''
 
     if (wiki.destination_content_path) {
       destPath = wiki.destination_content_path
         .replace('$1', encodeURIComponent(article.replace(/ /g, '_')))
     } else if (platform === 'dokuwiki') {
-      destPath = '/doku.php?id=' + encodeURIComponent(article.replace(/ /g, '_').toLowerCase())
+      destPath = `/doku.php?id=${encodeURIComponent(article.replace(/ /g, '_').toLowerCase())}`
     } else {
       // Default: MediaWiki-style /wiki/ArticleName
-      destPath = '/wiki/' + encodeURIComponent(article.replace(/ /g, '_'))
+      destPath = `/wiki/${encodeURIComponent(article.replace(/ /g, '_'))}`
     }
 
     const destinationUrl = `https://${destBase}${destPath}${url.search}${url.hash}`
     const wikiName = wiki.destination || wiki.article || destBase
     return { destinationUrl, wikiName }
-  } catch (e) {
+  } catch {
     return null
   }
 }
