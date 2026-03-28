@@ -26,7 +26,30 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
       let mainPageURL = Bundle.main.url(forResource: "Main", withExtension: "html"),
       let resourceURL = Bundle.main.resourceURL
     else {
-      assertionFailure("Failed to resolve bundled web resources.")
+      let message = "Failed to resolve bundled web resources."
+      #if DEBUG
+      assertionFailure(message)
+      #endif
+      NSLog("%@", message)
+      let fallbackHTML = """
+      <!doctype html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>Error</title>
+          <style>
+            body { font-family: -apple-system, system-ui, sans-serif; margin: 2rem; }
+            h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+            p { color: #555; }
+          </style>
+        </head>
+        <body>
+          <h1>Unable to load content</h1>
+          <p>The app could not find its bundled web resources. Please reinstall the app or contact support.</p>
+        </body>
+      </html>
+      """
+      self.webView.loadHTMLString(fallbackHTML, baseURL: nil)
       return
     }
 
