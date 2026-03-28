@@ -1,0 +1,154 @@
+name: Build & Release iOS and macOS Extensions
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.swift'
+      - 'ios/**'
+      - 'mos/**'
+      - '.github/workflows/build-and-release.yml'
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: 'Create as draft (for testing)'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.extract.outputs.version }}
+      tag_exists: ${{ steps.check_tag.outputs.exists }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Extract version from Xcode project
+        id: extract
+        run: |
+          VERSION=$(grep -m1 'MARKETING_VERSION = ' ios/Flean.xcodeproj/project.pbxproj | grep -oP '(?<== )[0-9.]+')
+          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: v$VERSION"
+      
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          if git rev-parse "${{ steps.extract.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Tag already exists!"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Tag does not exist - ready to build"
+          fi
+
+  build-and-release:
+    needs: check-version
+    if: needs.check-version.outputs.tag_exists == 'false'
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      # iOS Build
+      - name: Build iOS IPA
+        run: |
+          cd ios
+          mkdir -p build
+          
+          # Build archive
+          xcodebuild archive \
+            -scheme Flean \
+            -archivePath build/Flean.xcarchive \
+            -configuration Release \
+            -skipPackagePluginValidation \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS="" 2>&1 | tee build.log
+          
+          # Check for build errors
+          if grep -i "error:" build.log; then
+            echo "❌ iOS build failed"
+            exit 1
+          fi
+          echo "✅ iOS build succeeded"
+      
+      # macOS Build
+      - name: Build macOS App
+        run: |
+          cd mos
+          mkdir -p build
+          
+          # Build directly to app
+          xcodebuild build \
+            -scheme Flean \
+            -configuration Release \
+            -derivedDataPath build \
+            -skipPackagePluginValidation \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS="" 2>&1 | tee build.log
+          
+          # Check for build errors
+          if grep -i "error:" build.log; then
+            echo "❌ macOS build failed"
+            exit 1
+          fi
+          
+          # Find and zip the .app
+          APP_PATH=$(find build -name "Flean.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ Flean.app not found"
+            exit 1
+          fi
+          
+          cd "$(dirname "$APP_PATH")"
+          zip -r ../Flean.app.zip Flean.app
+          echo "✅ macOS build succeeded"
+      
+      # Create tag
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag ${{ needs.check-version.outputs.version }}
+          git push origin ${{ needs.check-version.outputs.version }}
+      
+      # Create Release
+      - name: Create Release
+        uses: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.check-version.outputs.version }}
+          release_name: "Flean ${{ needs.check-version.outputs.version }}"
+          draft: ${{ github.event.inputs.draft == 'true' }}
+          prerelease: false
+      
+      # Upload iOS IPA
+      - name: Upload iOS IPA
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ios/build/Flean.xcarchive/Products/Applications/Flean.app
+          asset_name: Flean.ipa
+          asset_content_type: application/octet-stream
+      
+      # Upload macOS App
+      - name: Upload macOS App
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./mos/build/Flean.app.zip
+          asset_name: Flean.app.zip
+          asset_content_type: application/zip
