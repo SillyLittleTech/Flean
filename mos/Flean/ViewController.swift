@@ -49,7 +49,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
           </body>
         </html>
         """
-      self.webView.loadHTMLString(fallbackHTML, baseURL: nil)
+      self.webView.loadHTMLString(fallbackHTML, baseURL: Bundle.main.bundleURL)
       return
     }
 
