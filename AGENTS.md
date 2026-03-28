@@ -58,17 +58,17 @@ Flean is a Safari Web Extension (with native host helpers) that redirects Fandom
 
 ## Version numbers
 
-Version numbers live in **two places** and must be kept in sync manually:
+Version numbers live in **two places** and must be kept in sync manually. Current values (as of release 2.1.6 / build 3) are shown below — replace them with your next release numbers in **both** projects:
 
 ### 1. Extension manifest (`manifest.json`) — `version` field
-Both `ios/extention/Resources/manifest.json` and `mos/Flean Extension/Resources/manifest.json` contain:
+Both `ios/extention/Resources/manifest.json` and `mos/Flean Extension/Resources/manifest.json` contain the extension version, for example:
 ```json
 "version": "2.1.6"
 ```
-Update this field in **both** files when releasing a new extension version.
+Update this value in **both** files for every release.
 
 ### 2. Xcode project files (`project.pbxproj`) — `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION`
-Both `ios/Flean.xcodeproj/project.pbxproj` and `mos/Flean.xcodeproj/project.pbxproj` contain multiple occurrences of:
+Both `ios/Flean.xcodeproj/project.pbxproj` and `mos/Flean.xcodeproj/project.pbxproj` contain multiple occurrences like:
 ```
 MARKETING_VERSION = 2.1.6;
 CURRENT_PROJECT_VERSION = 3;
@@ -84,11 +84,17 @@ The icon displayed in the Safari toolbar comes from the `action.default_icon` fi
 ```json
 "action": {
     "default_popup": "popup.html",
-    "default_icon": "images/icon-512.png"
+    "default_icon": {
+        "48": "images/icon-48.png",
+        "96": "images/icon-96.png",
+        "128": "images/icon-128.png",
+        "256": "images/icon-256.png",
+        "512": "images/icon-512.png"
+    }
 }
 ```
 
-in both `ios/extention/Resources/manifest.json` and `mos/Flean Extension/Resources/manifest.json`. The `images/` directory inside each extension Resources folder contains the icon files (`icon-48.png`, `icon-512.png`, etc.).
+in both `ios/extention/Resources/manifest.json` and `mos/Flean Extension/Resources/manifest.json`. The `images/` directory inside each extension Resources folder contains the icon files (`icon-48.png`, `icon-96.png`, `icon-128.png`, `icon-256.png`, `icon-512.png`, etc.).
 
 ---
 
