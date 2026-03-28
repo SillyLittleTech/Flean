@@ -1,0 +1,169 @@
+name: Build & Release iOS and macOS Extensions
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.swift'
+      - 'ios/**'
+      - 'mos/**'
+      - '.github/workflows/build-and-release.yml'
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: 'Create as draft (for testing)'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      version: ${{ steps.extract.outputs.version }}
+      tag_exists: ${{ steps.check_tag.outputs.exists }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Extract version from Xcode project
+        id: extract
+        run: |
+          VERSION=$(grep -m1 'MARKETING_VERSION = ' ios/Flean.xcodeproj/project.pbxproj | awk -F ' = ' '{ gsub(/;/,"",$2); print $2; exit }')
+          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: v$VERSION"
+
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          if git ls-remote --tags --exit-code origin "refs/tags/${{ steps.extract.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Tag already exists!"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Tag does not exist - ready to build"
+          fi
+
+  build-and-release:
+    needs: check-version
+    if: needs.check-version.outputs.tag_exists == 'false'
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # iOS Build
+      - name: Build iOS App
+        run: |
+          cd ios
+          mkdir -p build
+
+          xcodebuild build \
+            -project Flean.xcodeproj \
+            -target Flean \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -skipPackagePluginValidation \
+            SYMROOT=build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS=""
+
+          # Package the .app as a proper IPA (Payload/Flean.app zipped)
+          APP_PATH=$(find build -name "Flean.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ Flean.app not found"
+            exit 1
+          fi
+          mkdir -p build/ipa/Payload
+          cp -r "$APP_PATH" build/ipa/Payload/
+          ( cd build/ipa && zip -r ../Flean.ipa Payload )
+          echo "✅ iOS build succeeded"
+
+      # macOS Build
+      - name: Build macOS App
+        run: |
+          cd mos
+          mkdir -p build
+
+          xcodebuild build \
+            -project Flean.xcodeproj \
+            -target Flean \
+            -configuration Release \
+            -skipPackagePluginValidation \
+            SYMROOT=build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS=""
+
+          # Find and zip the .app into a fixed location matching the upload step
+          APP_PATH=$(find build -name "Flean.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ Flean.app not found"
+            exit 1
+          fi
+
+          # Create a zip whose top-level entry is Flean.app
+          OUT_ZIP="$(pwd)/build/Flean.app.zip"
+          APP_DIR="$(dirname "$APP_PATH")"
+          APP_NAME="$(basename "$APP_PATH")"
+          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "$APP_NAME" )
+          echo "✅ macOS build succeeded"
+
+      # Create tag
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          VERSION="${{ needs.check-version.outputs.version }}"
+          # Create local tag (no-op if already exists locally from a shallow clone)
+          git tag "$VERSION" 2>/dev/null || echo "Local tag $VERSION already exists, proceeding with push"
+          # Push to remote; fail clearly if the tag was created by a concurrent run
+          if ! git push origin "$VERSION"; then
+            echo "::error::Tag $VERSION already exists on remote. A release for this version may already exist."
+            exit 1
+          fi
+
+      # Create Release
+      - name: Create Release
+        uses: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.check-version.outputs.version }}
+          release_name: "Flean ${{ needs.check-version.outputs.version }}"
+          draft: ${{ github.event.inputs.draft == 'true' }}
+          prerelease: false
+
+      # Upload iOS App
+      - name: Upload iOS App
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ios/build/Flean.ipa
+          asset_name: Flean.ipa
+          asset_content_type: application/octet-stream
+
+      # Upload macOS App
+      - name: Upload macOS App
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./mos/build/Flean.app.zip
+          asset_name: Flean.app.zip
+          asset_content_type: application/zip
