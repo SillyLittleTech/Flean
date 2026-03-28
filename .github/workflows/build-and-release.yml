@@ -140,7 +140,11 @@ jobs:
             exit 1
           fi
 
-          zip -r build/Flean.app.zip "$APP_PATH"
+          # Create a zip whose top-level entry is Flean.app
+          OUT_ZIP="$(pwd)/build/Flean.app.zip"
+          APP_DIR="$(dirname "$APP_PATH")"
+          APP_NAME="$(basename "$APP_PATH")"
+          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "$APP_NAME" )
           echo "✅ macOS build succeeded"
 
       # Create tag
