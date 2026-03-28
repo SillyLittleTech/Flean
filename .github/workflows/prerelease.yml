@@ -45,16 +45,15 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_ENTITLEMENTS=""
 
-          # Find and zip the .app
+          # Package the .app as a proper IPA (Payload/Flean.app zipped)
           APP_PATH=$(find build -name "Flean.app" -type d | head -1)
           if [ -z "$APP_PATH" ]; then
             echo "❌ Flean.app not found"
             exit 1
           fi
-          OUT_ZIP="$(pwd)/build/Flean-iOS.app.zip"
-          APP_DIR="$(dirname "$APP_PATH")"
-          APP_NAME="$(basename "$APP_PATH")"
-          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "$APP_NAME" )
+          mkdir -p build/ipa/Payload
+          cp -r "$APP_PATH" build/ipa/Payload/
+          ( cd build/ipa && zip -r ../Flean.ipa Payload )
           echo "✅ iOS build succeeded"
 
       - name: Build macOS
@@ -108,9 +107,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
-          asset_path: ./ios/build/Flean-iOS.app.zip
-          asset_name: Flean-iOS.app.zip
-          asset_content_type: application/zip
+          asset_path: ./ios/build/Flean.ipa
+          asset_name: Flean.ipa
+          asset_content_type: application/octet-stream
 
       - name: Upload macOS App
         uses: actions/upload-release-asset@v1
