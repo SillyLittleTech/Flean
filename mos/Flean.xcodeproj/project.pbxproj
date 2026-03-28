@@ -89,6 +89,7 @@
 			explicitFolders = (
 				Resources/_locales,
 				Resources/images,
+				Resources/scripts,
 			);
 			path = "Flean Extension";
 			sourceTree = "<group>";
