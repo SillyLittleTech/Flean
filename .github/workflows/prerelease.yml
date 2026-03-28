@@ -6,6 +6,11 @@ on:
       - main
     types:
       - ready_for_review
+    paths:
+      - '.github/workflows/**'
+      - '**.swift'
+      - 'ios/**'
+      - 'mos/**'
 
 jobs:
   create-prerelease:
