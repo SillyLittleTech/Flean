@@ -37,8 +37,8 @@ jobs:
             -project Flean.xcodeproj \
             -target Flean \
             -configuration Release \
-            -derivedDataPath build \
             -destination 'generic/platform=iOS' \
+            SYMROOT=build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO
 
@@ -50,7 +50,7 @@ jobs:
             -project Flean.xcodeproj \
             -target Flean \
             -configuration Release \
-            -derivedDataPath build \
+            SYMROOT=build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO
 

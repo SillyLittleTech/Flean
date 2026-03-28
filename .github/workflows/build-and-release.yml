@@ -121,8 +121,8 @@ jobs:
             -project Flean.xcodeproj \
             -target Flean \
             -configuration Release \
-            -derivedDataPath build \
             -skipPackagePluginValidation \
+            SYMROOT=build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_ENTITLEMENTS="" 2>&1 | tee build.log
