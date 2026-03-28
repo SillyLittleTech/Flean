@@ -1,0 +1,77 @@
+name: CodeQL (Swift)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.swift'
+      - 'ios/**'
+      - 'mos/**'
+      - '.github/workflows/codeql.yml'
+      - '.github/codeql/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.swift'
+      - 'ios/**'
+      - 'mos/**'
+      - '.github/workflows/codeql.yml'
+      - '.github/codeql/**'
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: swift
+          config-file: ./.github/codeql/codeql-config.yml
+
+      # The projects do not contain shared schemes, so build with explicit targets.
+      - name: Build iOS app for analysis
+        run: |
+          cd ios
+          xcodebuild build \
+            -project Flean.xcodeproj \
+            -target Flean \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -skipPackagePluginValidation \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Build macOS app for analysis
+        run: |
+          cd mos
+          xcodebuild build \
+            -project Flean.xcodeproj \
+            -target Flean \
+            -configuration Debug \
+            -sdk macosx \
+            -skipPackagePluginValidation \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:swift'

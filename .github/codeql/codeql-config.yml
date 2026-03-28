@@ -1,0 +1,5 @@
+name: "Flean Swift CodeQL"
+
+paths:
+  - ios
+  - mos
