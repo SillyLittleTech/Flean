@@ -63,51 +63,31 @@ jobs:
       - uses: actions/checkout@v4
 
       # iOS Build
-      - name: Build iOS IPA
+      - name: Build iOS App
         run: |
           cd ios
           mkdir -p build
 
-          # Build archive
           xcodebuild archive \
             -project Flean.xcodeproj \
             -target Flean \
-            -archivePath build/Flean.xcarchive \
             -configuration Release \
+            -archivePath build/Flean.xcarchive \
             -destination 'generic/platform=iOS' \
             -skipPackagePluginValidation \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_ENTITLEMENTS="" 2>&1 | tee build.log
+            CODE_SIGN_ENTITLEMENTS=""
 
-          # Check for build errors
-          if grep -i "error:" build.log; then
-            echo "❌ iOS build failed"
+          # Zip the .app from inside the xcarchive for distribution
+          APP_PATH=$(find build/Flean.xcarchive/Products -name "Flean.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ Flean.app not found in xcarchive"
             exit 1
           fi
-
-          # Export IPA from archive
-          cat > build/ExportOptions.plist << 'EOF'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>method</key>
-            <string>development</string>
-            <key>signingStyle</key>
-            <string>automatic</string>
-          </dict>
-          </plist>
-          EOF
-
-          xcodebuild -exportArchive \
-            -archivePath build/Flean.xcarchive \
-            -exportPath build/export \
-            -exportOptionsPlist build/ExportOptions.plist \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_ENTITLEMENTS="" 2>&1 | tee export.log
-
+          APP_DIR="$(dirname "$APP_PATH")"
+          OUT_ZIP="$(pwd)/build/Flean-iOS.app.zip"
+          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "Flean.app" )
           echo "✅ iOS build succeeded"
 
       # macOS Build
@@ -116,7 +96,6 @@ jobs:
           cd mos
           mkdir -p build
 
-          # Build directly to app
           xcodebuild build \
             -project Flean.xcodeproj \
             -target Flean \
@@ -125,13 +104,7 @@ jobs:
             SYMROOT=build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_ENTITLEMENTS="" 2>&1 | tee build.log
-
-          # Check for build errors
-          if grep -i "error:" build.log; then
-            echo "❌ macOS build failed"
-            exit 1
-          fi
+            CODE_SIGN_ENTITLEMENTS=""
 
           # Find and zip the .app into a fixed location matching the upload step
           APP_PATH=$(find build -name "Flean.app" -type d | head -1)
@@ -152,8 +125,14 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git tag ${{ needs.check-version.outputs.version }}
-          git push origin ${{ needs.check-version.outputs.version }}
+          VERSION="${{ needs.check-version.outputs.version }}"
+          # Create local tag (no-op if already exists locally from a shallow clone)
+          git tag "$VERSION" 2>/dev/null || echo "Local tag $VERSION already exists, proceeding with push"
+          # Push to remote; fail clearly if the tag was created by a concurrent run
+          if ! git push origin "$VERSION"; then
+            echo "::error::Tag $VERSION already exists on remote. A release for this version may already exist."
+            exit 1
+          fi
 
       # Create Release
       - name: Create Release
@@ -167,16 +146,16 @@ jobs:
           draft: ${{ github.event.inputs.draft == 'true' }}
           prerelease: false
 
-      # Upload iOS IPA
-      - name: Upload iOS IPA
+      # Upload iOS App
+      - name: Upload iOS App
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./ios/build/export/Flean.ipa
-          asset_name: Flean.ipa
-          asset_content_type: application/octet-stream
+          asset_path: ./ios/build/Flean-iOS.app.zip
+          asset_name: Flean-iOS.app.zip
+          asset_content_type: application/zip
 
       # Upload macOS App
       - name: Upload macOS App
