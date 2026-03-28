@@ -1,0 +1,122 @@
+name: Create Prerelease on PR Ready
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - ready_for_review
+    paths:
+      - '.github/workflows/**'
+      - '**.swift'
+      - 'ios/**'
+      - 'mos/**'
+
+jobs:
+  create-prerelease:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract version from Xcode project
+        id: extract
+        run: |
+          VERSION=$(grep -m1 'MARKETING_VERSION = ' ios/Flean.xcodeproj/project.pbxproj | awk -F ' = ' '{ gsub(/;/,"",$2); print $2; exit }')
+          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: v$VERSION"
+
+      - name: Build iOS
+        run: |
+          cd ios
+          mkdir -p build
+
+          xcodebuild build \
+            -project Flean.xcodeproj \
+            -target Flean \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -skipPackagePluginValidation \
+            SYMROOT=build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS=""
+
+          # Package the .app as a proper IPA (Payload/Flean.app zipped)
+          APP_PATH=$(find build -name "Flean.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ Flean.app not found"
+            exit 1
+          fi
+          mkdir -p build/ipa/Payload
+          cp -r "$APP_PATH" build/ipa/Payload/
+          ( cd build/ipa && zip -r ../Flean.ipa Payload )
+          echo "✅ iOS build succeeded"
+
+      - name: Build macOS
+        run: |
+          cd mos
+          mkdir -p build
+
+          xcodebuild build \
+            -project Flean.xcodeproj \
+            -target Flean \
+            -configuration Release \
+            -skipPackagePluginValidation \
+            SYMROOT=build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS=""
+
+          # Find and zip the .app
+          APP_PATH=$(find build -name "Flean.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ Flean.app not found"
+            exit 1
+          fi
+          OUT_ZIP="$(pwd)/build/Flean.app.zip"
+          APP_DIR="$(dirname "$APP_PATH")"
+          APP_NAME="$(basename "$APP_PATH")"
+          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "$APP_NAME" )
+          echo "✅ macOS build succeeded"
+
+      - name: Create Prerelease
+        uses: actions/create-release@v1
+        id: create_prerelease
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.extract.outputs.version }}-prerelease-${{ github.run_number }}
+          release_name: "Flean ${{ steps.extract.outputs.version }} - Prerelease (PR #${{ github.event.pull_request.number }})"
+          body: |
+            🧪 **Prerelease Build** from PR #${{ github.event.pull_request.number }}
+
+            **Branch:** ${{ github.event.pull_request.head.ref }}
+            **Author:** @${{ github.event.pull_request.user.login }}
+
+            This is a prerelease. Testing and feedback welcome!
+          draft: false
+          prerelease: true
+
+      - name: Upload iOS App
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
+          asset_path: ./ios/build/Flean.ipa
+          asset_name: Flean.ipa
+          asset_content_type: application/octet-stream
+
+      - name: Upload macOS App
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
+          asset_path: ./mos/build/Flean.app.zip
+          asset_name: Flean.app.zip
+          asset_content_type: application/zip
