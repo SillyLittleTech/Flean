@@ -33,29 +33,59 @@ jobs:
         run: |
           cd ios
           mkdir -p build
-          xcodebuild build \
+
+          xcodebuild archive \
             -project Flean.xcodeproj \
             -target Flean \
             -configuration Release \
+            -archivePath build/Flean.xcarchive \
             -destination 'generic/platform=iOS' \
-            -destination 'generic/platform=iOS Simulator' \
+            -skipPackagePluginValidation \
             CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS=""
+
+          # Zip the .app from inside the xcarchive for distribution
+          APP_PATH=$(find build/Flean.xcarchive/Products -name "Flean.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ Flean.app not found in xcarchive"
+            exit 1
+          fi
+          APP_DIR="$(dirname "$APP_PATH")"
+          OUT_ZIP="$(pwd)/build/Flean-iOS.app.zip"
+          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "Flean.app" )
+          echo "✅ iOS build succeeded"
 
       - name: Build macOS
         run: |
           cd mos
           mkdir -p build
+
           xcodebuild build \
             -project Flean.xcodeproj \
             -target Flean \
             -configuration Release \
+            -skipPackagePluginValidation \
             SYMROOT=build \
             CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS=""
+
+          # Find and zip the .app
+          APP_PATH=$(find build -name "Flean.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ Flean.app not found"
+            exit 1
+          fi
+          OUT_ZIP="$(pwd)/build/Flean.app.zip"
+          APP_DIR="$(dirname "$APP_PATH")"
+          APP_NAME="$(basename "$APP_PATH")"
+          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "$APP_NAME" )
+          echo "✅ macOS build succeeded"
 
       - name: Create Prerelease
         uses: actions/create-release@v1
+        id: create_prerelease
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -70,3 +100,23 @@ jobs:
             This is a prerelease. Testing and feedback welcome!
           draft: false
           prerelease: true
+
+      - name: Upload iOS App
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
+          asset_path: ./ios/build/Flean-iOS.app.zip
+          asset_name: Flean-iOS.app.zip
+          asset_content_type: application/zip
+
+      - name: Upload macOS App
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
+          asset_path: ./mos/build/Flean.app.zip
+          asset_name: Flean.app.zip
+          asset_content_type: application/zip
