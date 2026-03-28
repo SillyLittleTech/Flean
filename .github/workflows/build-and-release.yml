@@ -93,9 +93,9 @@ jobs:
           <plist version="1.0">
           <dict>
             <key>method</key>
-            <string>ad-hoc</string>
+            <string>development</string>
             <key>signingStyle</key>
-            <string>manual</string>
+            <string>automatic</string>
           </dict>
           </plist>
           EOF
