@@ -122,6 +122,6 @@ When editing project files manually (without Xcode open), use a plain text edito
 
 - **Two separate projects, not one workspace.** Don't assume a change in `ios/` applies to `mos/` — you must update both explicitly.
 - **The iOS extension folder is misspelled** as `extention` (missing an 's'). This is intentional/historical; do not rename it without updating all Xcode project references.
-- **No `.xcscheme` files are committed.** `xcodebuild -scheme` will fail; use `-target` instead.
+- **No shared `.xcscheme` files are committed.** `xcodebuild -scheme` is unreliable in fresh clones/CI because no shared schemes exist; prefer `-project` / `-target` for reproducible builds.
 - **Toolbar icon ≠ app icon.** The app icon (in `Assets.xcassets/AppIcon.appiconset/`) controls what appears on the home screen / Launchpad. The toolbar icon in Safari is controlled by `action.default_icon` in `manifest.json`.
 - **Shared web resources** (`Main.html`, `Script.js`) are referenced by both the iOS and macOS native app targets, but they live inside each project's own `Resources/` folder — they are not a single shared source file.
