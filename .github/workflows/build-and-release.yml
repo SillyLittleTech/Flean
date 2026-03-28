@@ -103,8 +103,10 @@ jobs:
             -skipPackagePluginValidation \
             SYMROOT=build \
             CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_ENTITLEMENTS=""
+            CODE_SIGNING_ALLOWED=NO
+
+          APP_ENT="Flean/Flean.entitlements"
+          EXT_ENT="Flean Extension/Flean_Extension.entitlements"
 
           # Find and zip the .app into a fixed location matching the upload step
           APP_PATH=$(find build -name "Flean.app" -type d | head -1)
@@ -112,6 +114,17 @@ jobs:
             echo "❌ Flean.app not found"
             exit 1
           fi
+
+          EXT_PATH="$APP_PATH/Contents/PlugIns/Flean Extension.appex"
+          if [ ! -d "$EXT_PATH" ]; then
+            echo "❌ Extension appex not found at $EXT_PATH"
+            exit 1
+          fi
+
+          # Ad-hoc sign the extension and host app so Safari recognizes the bundle
+          codesign --force --options runtime --entitlements "$EXT_ENT" -s - "$EXT_PATH"
+          codesign --force --options runtime --entitlements "$APP_ENT" -s - "$APP_PATH"
+          codesign --verify --deep --strict "$APP_PATH"
 
           # Create a zip whose top-level entry is Flean.app
           OUT_ZIP="$(pwd)/build/Flean.app.zip"
