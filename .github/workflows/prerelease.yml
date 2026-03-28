@@ -1,0 +1,62 @@
+name: Create Prerelease on PR Ready
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - ready_for_review
+
+jobs:
+  create-prerelease:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Extract version from Xcode project
+        id: extract
+        run: |
+          VERSION=$(grep -m1 'MARKETING_VERSION = ' ios/Flean.xcodeproj/project.pbxproj | grep -oP '(?<== )[0-9.]+')
+          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: v$VERSION"
+      
+      - name: Build iOS
+        run: |
+          cd ios
+          mkdir -p build
+          xcodebuild build \
+            -scheme Flean \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO
+      
+      - name: Build macOS
+        run: |
+          cd mos
+          mkdir -p build
+          xcodebuild build \
+            -scheme Flean \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO
+      
+      - name: Create Prerelease
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.extract.outputs.version }}-prerelease-${{ github.run_number }}
+          release_name: "Flean ${{ steps.extract.outputs.version }} - Prerelease (PR #${{ github.event.pull_request.number }})"
+          body: |
+            🧪 **Prerelease Build** from PR #${{ github.event.pull_request.number }}
+            
+            **Branch:** ${{ github.event.pull_request.head.ref }}
+            **Author:** @${{ github.event.pull_request.user.login }}
+            
+            This is a prerelease. Testing and feedback welcome!
+          draft: false
+          prerelease: true
