@@ -68,26 +68,27 @@ jobs:
           cd ios
           mkdir -p build
 
-          xcodebuild archive \
+          xcodebuild build \
             -project Flean.xcodeproj \
             -target Flean \
             -configuration Release \
-            -archivePath build/Flean.xcarchive \
             -destination 'generic/platform=iOS' \
             -skipPackagePluginValidation \
+            SYMROOT=build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_ENTITLEMENTS=""
 
-          # Zip the .app from inside the xcarchive for distribution
-          APP_PATH=$(find build/Flean.xcarchive/Products -name "Flean.app" -type d | head -1)
+          # Find and zip the .app
+          APP_PATH=$(find build -name "Flean.app" -type d | head -1)
           if [ -z "$APP_PATH" ]; then
-            echo "❌ Flean.app not found in xcarchive"
+            echo "❌ Flean.app not found"
             exit 1
           fi
-          APP_DIR="$(dirname "$APP_PATH")"
           OUT_ZIP="$(pwd)/build/Flean-iOS.app.zip"
-          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "Flean.app" )
+          APP_DIR="$(dirname "$APP_PATH")"
+          APP_NAME="$(basename "$APP_PATH")"
+          ( cd "$APP_DIR" && zip -r "$OUT_ZIP" "$APP_NAME" )
           echo "✅ iOS build succeeded"
 
       # macOS Build
