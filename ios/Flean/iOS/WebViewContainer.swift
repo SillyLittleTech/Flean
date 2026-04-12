@@ -12,6 +12,7 @@ struct WebViewContainer: UIViewRepresentable {
 
         // Add script message handler compatible with the macOS app's controller name
         web.configuration.userContentController.add(context.coordinator, name: "controller")
+        web.navigationDelegate = context.coordinator
 
         // Give the coordinator a reference to the web view so it can inject
         // settings back into the page when requested.
@@ -29,7 +30,7 @@ struct WebViewContainer: UIViewRepresentable {
 
     func makeCoordinator() -> Coordinator { Coordinator() }
 
-    class Coordinator: NSObject, WKScriptMessageHandler {
+    class Coordinator: NSObject, WKScriptMessageHandler, WKNavigationDelegate {
         // Weak reference to avoid retain cycles
         weak var webView: WKWebView?
 
@@ -137,6 +138,15 @@ struct WebViewContainer: UIViewRepresentable {
         @objc private func settingsChanged(_ note: Notification) {
             // Push updated settings into the web view when the SettingsStore saves.
             sendSettingsToPage()
+        }
+
+        // MARK: - WKNavigationDelegate
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            // Update the UI to use iOS-appropriate text. Extension state cannot be
+            // queried programmatically on iOS (no SFSafariExtensionManager equivalent),
+            // so we pass null for the enabled state (shows "unknown") and true for
+            // useSettingsInsteadOfPreferences so the correct iOS wording is displayed.
+            webView.evaluateJavaScript("show(null, true)", completionHandler: nil)
         }
         
     }
