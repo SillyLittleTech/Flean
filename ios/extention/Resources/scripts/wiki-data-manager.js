@@ -163,21 +163,36 @@ export async function findMatchingWiki (urlString) {
     }
     try { article = decodeURIComponent(article) } catch { /* keep encoded */ }
 
+    // If the article is empty (wiki root) or matches the origin's main page, redirect to
+    // the destination's declared main page to honour cross-wiki naming differences.
+    if (wiki.destination_main_page) {
+      const normalize = title => (title || '').replace(/_/g, ' ').toLowerCase().trim()
+      if (!article || normalize(article) === normalize(originEntry.origin_main_page || '')) {
+        article = wiki.destination_main_page
+      }
+    }
+
     // Build destination URL based on platform
     const destBase = wiki.destination_base_url
       .replace(/^https?:\/\//, '')
       .replace(/\/$/, '')
     const platform = (wiki.destination_platform || 'mediawiki').toLowerCase()
     let destPath = ''
+    const encodedArticle = encodeURIComponent(article.replace(/ /g, '_'))
 
     if (wiki.destination_content_path) {
-      destPath = wiki.destination_content_path
-        .replace('$1', encodeURIComponent(article.replace(/ /g, '_')))
+      if (wiki.destination_content_path.includes('$1')) {
+        // Template-style path: replace the $1 placeholder with the article name
+        destPath = wiki.destination_content_path.replace('$1', encodedArticle)
+      } else {
+        // Prefix-style path (e.g. "/wiki/"): append the article name to the prefix
+        destPath = wiki.destination_content_path + encodedArticle
+      }
     } else if (platform === 'dokuwiki') {
       destPath = `/doku.php?id=${encodeURIComponent(article.replace(/ /g, '_').toLowerCase())}`
     } else {
       // Default: MediaWiki-style /wiki/ArticleName
-      destPath = `/wiki/${encodeURIComponent(article.replace(/ /g, '_'))}`
+      destPath = `/wiki/${encodedArticle}`
     }
 
     const destinationUrl = `https://${destBase}${destPath}${url.search}${url.hash}`
