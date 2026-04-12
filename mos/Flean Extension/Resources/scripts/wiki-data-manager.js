@@ -166,7 +166,7 @@ export async function findMatchingWiki (urlString) {
     // If the article is empty (wiki root) or matches the origin's main page, redirect to
     // the destination's declared main page to honour cross-wiki naming differences.
     if (wiki.destination_main_page) {
-      const normalize = t => (t || '').replace(/_/g, ' ').toLowerCase().trim()
+      const normalize = title => (title || '').replace(/_/g, ' ').toLowerCase().trim()
       if (!article || normalize(article) === normalize(originEntry.origin_main_page || '')) {
         article = wiki.destination_main_page
       }
