@@ -135,6 +135,15 @@ export function invalidateIndex () {
 }
 
 /**
+ * Pre-build the in-memory wiki lookup index.
+ * Call this during extension startup so the first findMatchingWiki request
+ * does not stall waiting for index construction within the content-script timeout.
+ */
+export function warmIndex () {
+  return ensureIndex()
+}
+
+/**
  * Given a URL string, find the best matching independent wiki destination.
  * Returns { destinationUrl: string, wikiName: string } or null if no match found.
  */

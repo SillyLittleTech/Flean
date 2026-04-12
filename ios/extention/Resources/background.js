@@ -1,9 +1,11 @@
-import { getWikiData, fetchWikiData, findMatchingWiki, invalidateIndex } from './scripts/wiki-data-manager.js'
+import { fetchWikiData, findMatchingWiki, invalidateIndex, warmIndex } from './scripts/wiki-data-manager.js'
 
-// Initialise wiki data on extension startup (loads from cache or fetches fresh)
+// Initialise wiki data on extension startup and pre-warm the lookup index so the
+// first findWiki message from content.js is answered without needing to build the
+// index inside the 500ms race window.
 async function initWikiData () {
   try {
-    await getWikiData()
+    await warmIndex()
   } catch (err) {
     if (err) return
   }
