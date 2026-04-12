@@ -139,7 +139,7 @@ export function invalidateIndex () {
  * Call this during extension startup so the first findMatchingWiki request
  * does not stall waiting for index construction within the content-script timeout.
  */
-export async function warmIndex () {
+export function warmIndex () {
   return ensureIndex()
 }
 

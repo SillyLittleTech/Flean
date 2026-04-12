@@ -20,9 +20,10 @@
 
       // Load bundled Main.html from the app bundle resources
       if let url = Bundle.main.url(
-        forResource: "Main", withExtension: "html", subdirectory: "Base.lproj")
+        forResource: "Main", withExtension: "html", subdirectory: "Base.lproj"),
+        let resourceURL = Bundle.main.resourceURL
       {
-        web.loadFileURL(url, allowingReadAccessTo: Bundle.main.resourceURL!)
+        web.loadFileURL(url, allowingReadAccessTo: resourceURL)
       }
 
       return web
@@ -151,7 +152,7 @@
       }
 
       // MARK: - WKNavigationDelegate
-      func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+      func webView(_ webView: WKWebView, didFinish navigation: WKNavigation?) {
         // Update the UI to use iOS-appropriate text. Extension state cannot be
         // queried programmatically on iOS (no SFSafariExtensionManager equivalent),
         // so we pass null for the enabled state (shows "unknown") and true for
