@@ -1,0 +1,11 @@
+fandom.com###global-explore-navigation
+fandom.com##button.global-action__button.wds-avatar.wds-avatar--square
+fandom.com##div.fandom-ad-placeholder.fandom-ad-wrapper
+fandom.com##div.global-top-navigation__action-wrapper
+fandom.com##div.page-side-tools
+fandom.com##div.wiki-tools
+fandom.com##div.wikia-bar
+fandom.com##div[data-testid] > div
+fandom.com##div[data-type][data-showafterinit]
+fandom.com##footer
+fandom.com##svg[aria-hidden][focusable]
